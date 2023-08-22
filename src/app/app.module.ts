@@ -7,6 +7,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { PagenotfoundComponent } from './Pages/pagenotfound/pagenotfound.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import { FooterComponent } from './shared/footer/footer.component';
     HeaderComponent,
     PagenotfoundComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
