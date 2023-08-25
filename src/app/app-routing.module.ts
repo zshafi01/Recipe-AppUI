@@ -4,8 +4,8 @@ import { HomeComponent } from './Pages/home/home.component';
 import { PagenotfoundComponent } from './Pages/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
-  {path:'home',component:HomeComponent},
   {path:'', redirectTo:'home',pathMatch:'full'}, 
+  {path:'home',component:HomeComponent},
   {path:'**',component:PagenotfoundComponent},
 
 
