@@ -24,6 +24,8 @@
         <td>{{category.createdOn|date}}</td>
         <td>
           <div><a [routerLink]=" '/category/ ' + category.id " class="btn"><i class="fa fa-edit"></i> Edit </a>
+          
+          <a   (click)="onDelete(category.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i> Delete </a>
           </div>
         </td>
       </tr>

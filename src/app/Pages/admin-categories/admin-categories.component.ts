@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
+import { DeleteBackendService } from 'src/app/services/delete-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AdminCategoriesComponent implements OnInit {
   length:number=0;
   document: any;
 
-  constructor(private registory:ViewBackendService){}
+  constructor(private registory:ViewBackendService, private deleteService:DeleteBackendService){}
   categories:Category[]=[];
 
   ngOnInit(): void {
@@ -45,6 +46,13 @@ onSubmit(){
   this.keyword = (<HTMLInputElement>this.document.getElementById('keyword')).value;
   this.getAllCategoriesPageable(this.keyword, this.pageNumber, this.pageSize);
 
+
+}
+onDelete(id:number){
+  this.deleteService.deleteCategoryById(id).subscribe(data=>{
+    console.log("has been deleted")
+    this.ngOnInit();
+  })
 
 }
   }
