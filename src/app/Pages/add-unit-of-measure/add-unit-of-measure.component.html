@@ -1,0 +1,15 @@
+<div class="container my-5">
+    <div class="card" style="width: 50rem; padding: 20px;">
+        <form class="example-form" #unitofMeasureForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-Group">
+                <label for="uom" class="form-label">Unit OF Measure</label>
+                <input type="text" class="form-control" id="uom" #unitOfMeasure="ngModel" name="uom"
+                    [(ngModel)]="uom.name" required>
+                    
+                <!-- <mat-error *ngIf="categoryName.touched && categoryName.hasError('required')" class="text-danger">category Name is requeried</mat-error> -->
+                <button mat-button type="submit" class="btn btn-primary" [disabled]="!unitofMeasureForm.valid" >Submit</button>
+
+            </div>
+        </form>
+    </div>
+</div>

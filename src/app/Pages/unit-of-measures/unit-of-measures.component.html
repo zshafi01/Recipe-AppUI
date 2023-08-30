@@ -1,0 +1,27 @@
+<div class="container">
+<table class="table my-5">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Unit Of Measure </th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let unit of unitofmesures">
+            <td>{{unit.id}}</td>
+            <td>{{unit.name}}</td>
+            <td>
+                <div>
+                  <!-- <a [routerLink]=" '/unitofmeasure/detail/' + unitofmeasure.id " class="btn"><i class="fa fa-eye"></i> View </a> -->
+      
+                  <a [routerLink]=" '/unitofmeasure/ ' + unitofmeasure.id " class="btn"><i class="fa fa-edit"></i> Edit </a> 
+      
+                  <a (click)="onDelete(unit.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i> Delete </a>
+                </div>
+              </td>
+        </tr>
+
+    </tbody>
+</table>
+</div>

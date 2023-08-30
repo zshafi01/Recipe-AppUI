@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
+import { Newsletter } from '../models/newsletter';
+import { UnitOfMeasure } from '../models/unit-of-measure';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +22,13 @@ export class RegistrationBackendService {
   
     public registorCategory(category:Category):Observable<Object>{
       return this.httpClient.post(this.adminUrl + '/category', category);
+    }
+
+    public registorSubscriber(newsletter: Newsletter):Observable<Object>{
+      return this.httpClient.post(this.publicUrl + '/newsletter', newsletter);
+
+    }
+    public registorUnitOfMeasure(uom: UnitOfMeasure):Observable<Object>{
+      return this.httpClient.post(this.adminUrl + '/unitofmeasure',uom);
     }
 }

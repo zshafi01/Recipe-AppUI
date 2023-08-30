@@ -11,6 +11,21 @@ import { HttpClientModule} from '@angular/common/http';
 import { AdminAddCategoryComponent } from './Pages/admin-add-category/admin-add-category.component';
 import { AdminCategoriesComponent } from './Pages/admin-categories/admin-categories.component';
 import { AdminCategoryUpdateComponent } from './Pages/admin-category-update/admin-category-update.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
+import { AddUnitOfMeasureComponent } from './Pages/add-unit-of-measure/add-unit-of-measure.component';
+import { UnitOfMeasuresComponent } from './Pages/unit-of-measures/unit-of-measures.component';
+import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/update-unit-of-measure.component';
+
+
+
+
+
+
 
 
 @NgModule({
@@ -23,13 +38,22 @@ import { AdminCategoryUpdateComponent } from './Pages/admin-category-update/admi
     AdminAddCategoryComponent,
     AdminCategoriesComponent,
     AdminCategoryUpdateComponent,
+    CategoryDetailsComponent,
+    AddUnitOfMeasureComponent,
+    UnitOfMeasuresComponent,
+    UpdateUnitOfMeasureComponent,
     
   ],
   imports: [
+    CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

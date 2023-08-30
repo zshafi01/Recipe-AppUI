@@ -1,14 +1,21 @@
-<div class="container">
+<div class="container my-5">
+  <div class="card" style="width: 50rem; padding: 20px;">
 <form  class="example-form" #catagoryForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-Group">
       <label for="name" class="form-label">Category Name</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="category.name" required>
+      <input type="text" class="form-control" id="name" #categoryName="ngModel" name="name" [(ngModel)]="category.name" required >
+      <mat-error *ngIf="categoryName.touched && categoryName.hasError('required')" class="text-danger">category Name is requeried</mat-error>
     </div>
     <div class="form-Group">
       <label for="description" class="form-label">Category Description</label>
-      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="category.description" required>
+      <textarea type="text" class="form-control" id="description" #categoryDescription="ngModel" name="description"  [(ngModel)]="category.description" rows="3" maxlength="255" required></textarea>
+      <mat-error *ngIf="categoryDescription.value?.length == 255" class="text-danger"> only 255 charactors allowed!</mat-error>
+      <mat-error *ngIf="categoryDescription.touched && categoryDescription.hasError('required')" class="text-danger">category description is requeried</mat-error>
+      <mat-hint >{{categoryDescription.value?.length || 0}}/255</mat-hint>
+      
     </div>
    
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button mat-button type="submit" class="btn btn-primary" [disabled]="!catagoryForm.valid" >Submit</button>
   </form>
+  </div>
   </div>

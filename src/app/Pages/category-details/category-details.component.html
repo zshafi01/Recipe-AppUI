@@ -1,0 +1,10 @@
+<div class="container my-5" >
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{categoryDetail.id}} {{categoryDetail.name}}</h5>
+            <p class="card-text">{{categoryDetail.description}}</p>
+            <p class="card-text"><small class="text-muted">Last updated on {{categoryDetail.createdOn}}</small></p>
+            <a [routerLink]=" '/categories' " class="btn btn-primary">Go Back</a>
+        </div>
+    </div>
+</div>

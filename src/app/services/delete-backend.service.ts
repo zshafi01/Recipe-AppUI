@@ -22,4 +22,7 @@ export class DeleteBackendService {
     public deleteCategoryById(id:number):Observable<Object>{
       return this.httpClient.get(this.adminUrl + '/category/' + id + '/delete' )
     }
+    public deleteUnitOfMeasureById(id:number):Observable<Object>{
+      return this.httpClient.get(this.adminUrl + '/uniteofmeasure/' + id + '/delete')
+    }
 }

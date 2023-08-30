@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
+import { UnitOfMeasure } from '../models/unit-of-measure';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class UpdateBackendService {
 
     public updateCategory(category:Category):Observable<Object>{
       return this.httpClient.post(this.adminUrl + '/category', category);
+    }
+    public updateUnitOfMeasure(uom:UnitOfMeasure):Observable<Object>{
+      return this.httpClient.post(this.adminUrl + '/unitofmeasure', uom);
     }
  
 }

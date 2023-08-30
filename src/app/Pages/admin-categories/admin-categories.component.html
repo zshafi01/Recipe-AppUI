@@ -6,7 +6,10 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
-  <table class="table my-5" >
+  <div>
+    <a [routerLink]=" '/add-category' " class="btn btn-dark">Add Category</a>
+  </div>
+  <table class="table my-5">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -20,19 +23,23 @@
       <tr *ngFor="let category of categories">
         <td>{{category.id}}</td>
         <td>{{category.name}}</td>
-        <td>{{category.description}}</td>
+        <td>{{category.description.length > 25?(category.description | slice: 0:25) + '...' :(category.description)}}
+        </td>
         <td>{{category.createdOn|date}}</td>
         <td>
-          <div><a [routerLink]=" '/category/ ' + category.id " class="btn"><i class="fa fa-edit"></i> Edit </a>
-          
-          <a   (click)="onDelete(category.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i> Delete </a>
+          <div>
+            <a [routerLink]=" '/category/detail/' + category.id " class="btn"><i class="fa fa-eye"></i> View </a>
+
+            <a [routerLink]=" '/category/ ' + category.id " class="btn"><i class="fa fa-edit"></i> Edit </a>
+
+            <a (click)="onDelete(category.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i> Delete </a>
           </div>
         </td>
       </tr>
-      
+
     </tbody>
   </table>
-  <div class="container my-5"  *ngIf="categories.length == 0 || categories == null">
+  <div class="container my-5" *ngIf="categories.length == 0 || categories == null">
     <h1 class="text-center">No Content</h1>
   </div>
 </div>

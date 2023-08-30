@@ -31,4 +31,7 @@ export class ViewBackendService   {
     public getCategoryById(id:number):Observable<Category>{
       return this.httpClient.get<Category>(this.publicUrl + '/category/' + id + '/show')
     }
+    public getAllUnitOfMeasurePageable(keyword:string,pageNo:number, pageSize:number): Observable<any>{
+      return this.httpClient.get(this.publicUrl + '/uniteofmeasures?keyword=' +keyword + "&page="+ pageNo + "&size=" + pageSize)
+    }
 }

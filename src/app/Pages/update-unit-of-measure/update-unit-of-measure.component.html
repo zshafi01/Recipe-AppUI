@@ -1,0 +1,15 @@
+<div class="container">
+    <form class="example-form" #catagoryForm="ngForm" (ngSubmit)="onUpdateSubmit()">
+        <div class="form-Group">
+            <label for="id" class="form-label">UOM ID</label>
+            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="uom.id" disabled>
+        </div>
+        <div class="form-Group">
+            <label for="uom" class="form-label">Unit Of Measure</label>
+            <input type="text" class="form-control" id="uom" name="uom" [(ngModel)]="uom.name" required>
+        </div>
+       
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
