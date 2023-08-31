@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
 import { Newsletter } from '../models/newsletter';
+import { Recipe } from '../models/recipe';
 import { UnitOfMeasure } from '../models/unit-of-measure';
 
 @Injectable({
@@ -30,5 +31,8 @@ export class RegistrationBackendService {
     }
     public registorUnitOfMeasure(uom: UnitOfMeasure):Observable<Object>{
       return this.httpClient.post(this.adminUrl + '/unitofmeasure',uom);
+    }
+    public registorRecipe(recipe: Recipe):Observable<Object>{
+      return this.httpClient.post(this.userUrl + '/recipe', recipe)
     }
 }

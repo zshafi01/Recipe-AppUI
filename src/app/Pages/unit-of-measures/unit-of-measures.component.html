@@ -1,5 +1,6 @@
 <div class="container">
-<table class="table my-5">
+    <a [routerLink]=" '/add-unitofmeasure'" class="btn btn-primary my-5" >Add UnitOfMeasure </a>
+<table class="table ">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -15,7 +16,7 @@
                 <div>
                   <!-- <a [routerLink]=" '/unitofmeasure/detail/' + unitofmeasure.id " class="btn"><i class="fa fa-eye"></i> View </a> -->
       
-                  <a [routerLink]=" '/unitofmeasure/ ' + unitofmeasure.id " class="btn"><i class="fa fa-edit"></i> Edit </a> 
+                  <a [routerLink]=" '/unitofmeasure/ ' + unit.id " class="btn"><i class="fa fa-edit"></i> Edit </a> 
       
                   <a (click)="onDelete(unit.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i> Delete </a>
                 </div>

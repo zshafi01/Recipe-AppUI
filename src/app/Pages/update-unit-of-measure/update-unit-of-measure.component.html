@@ -1,15 +1,18 @@
-<div class="container">
+<div class="container my-5">
+    <div class="card" style="width: 50rem; padding: 20px;">
     <form class="example-form" #catagoryForm="ngForm" (ngSubmit)="onUpdateSubmit()">
         <div class="form-Group">
             <label for="id" class="form-label">UOM ID</label>
-            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="uom.id" disabled>
+            <input type="text" class="form-control" id="id" name="id" #id="ngModel" [(ngModel)]="uom.id" disabled>
         </div>
         <div class="form-Group">
-            <label for="uom" class="form-label">Unit Of Measure</label>
-            <input type="text" class="form-control" id="uom" name="uom" [(ngModel)]="uom.name" required>
+            <label for="name" class="form-label">Unit Of Measure</label>
+            <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="uom.name"
+                required>
+            <mat-error *ngIf="name.touched && name.hasError('required')" class="text-danger">This is required field!
+            </mat-error>
         </div>
-       
-
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary my-3">Update</button>
     </form>
+    </div>
 </div>

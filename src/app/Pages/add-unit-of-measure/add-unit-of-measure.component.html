@@ -2,12 +2,11 @@
     <div class="card" style="width: 50rem; padding: 20px;">
         <form class="example-form" #unitofMeasureForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-Group">
-                <label for="uom" class="form-label">Unit OF Measure</label>
-                <input type="text" class="form-control" id="uom" #unitOfMeasure="ngModel" name="uom"
-                    [(ngModel)]="uom.name" required>
-                    
-                <!-- <mat-error *ngIf="categoryName.touched && categoryName.hasError('required')" class="text-danger">category Name is requeried</mat-error> -->
-                <button mat-button type="submit" class="btn btn-primary" [disabled]="!unitofMeasureForm.valid" >Submit</button>
+                <label for="name" class="form-label">Unit OF Measure</label>
+                <input type="text" class="form-control" id="name"  name="name" #name="ngModel" [(ngModel)]="uom.name" placeholder="please enter unit of measure here!" required>
+                <mat-error  *ngIf="name.touched && name.hasError('required')"  class="text-danger">This field is requred!</mat-error>
+               
+                <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="!unitofMeasureForm.valid" >Submit</button>
 
             </div>
         </form>

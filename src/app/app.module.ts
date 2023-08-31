@@ -20,6 +20,7 @@ import { CategoryDetailsComponent } from './Pages/category-details/category-deta
 import { AddUnitOfMeasureComponent } from './Pages/add-unit-of-measure/add-unit-of-measure.component';
 import { UnitOfMeasuresComponent } from './Pages/unit-of-measures/unit-of-measures.component';
 import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/update-unit-of-measure.component';
+import { AddRecipeComponent } from './Pages/add-recipe/add-recipe.component';
 
 
 
@@ -42,6 +43,7 @@ import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/upd
     AddUnitOfMeasureComponent,
     UnitOfMeasuresComponent,
     UpdateUnitOfMeasureComponent,
+    AddRecipeComponent,
     
   ],
   imports: [

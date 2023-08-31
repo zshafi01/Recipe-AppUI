@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UnitOfMeasure } from 'src/app/models/unit-of-measure';
 import { UpdateBackendService } from 'src/app/services/update-backend.service';
+import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
   selector: 'app-update-unit-of-measure',
@@ -8,24 +10,35 @@ import { UpdateBackendService } from 'src/app/services/update-backend.service';
   styleUrls: ['./update-unit-of-measure.component.css']
 })
 export class UpdateUnitOfMeasureComponent implements OnInit {
-  uom:UnitOfMeasure=new UnitOfMeasure();
+  id!:number;
+  uom:UnitOfMeasure= new UnitOfMeasure();
 
-  constructor(private update:UpdateBackendService){}
-  
+  constructor(private update:UpdateBackendService,  private view:ViewBackendService,private route:ActivatedRoute, private router:Router){}
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.id=this.route.snapshot.params['id'];
+    this.getUnitOfMeasureById(this.id);
+  }
+  getUnitOfMeasureById(id:number){
+    this.view.publicUnitOfMeasureById(id).subscribe({
+      next:(data)=>{
+      this.uom = data;
+      },
+      error:(error)=>{
+        console.error(error);
+      }
+    })
   }
 
-  updateUnitOfMeasure(uom:UnitOfMeasure){
-    this.update.updateUnitOfMeasure(uom).subscribe({
+  onUpdateSubmit(){
+    this.update.updateUnitOfMeasure(this.uom).subscribe({
       next:(data)=>{
+        this.router.navigate(['/unitofmeasures']);
 
       },
       error:(error)=>{
         console.error(error);
       }
-      
-    })
+     })
   }
-
-}
+  }

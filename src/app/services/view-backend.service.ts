@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
 import { Recipe } from '../models/recipe';
+import { UnitOfMeasure } from '../models/unit-of-measure';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,9 @@ export class ViewBackendService   {
       return this.httpClient.get<Category>(this.publicUrl + '/category/' + id + '/show')
     }
     public getAllUnitOfMeasurePageable(keyword:string,pageNo:number, pageSize:number): Observable<any>{
-      return this.httpClient.get(this.publicUrl + '/uniteofmeasures?keyword=' +keyword + "&page="+ pageNo + "&size=" + pageSize)
+      return this.httpClient.get(this.publicUrl + '/unitofmeasures?keyword=' +keyword + "&page="+ pageNo + "&size=" + pageSize)
+    }
+    publicUnitOfMeasureById(id:number):Observable<UnitOfMeasure>{
+      return this.httpClient.get<UnitOfMeasure>(this.publicUrl +'/unitofmeasure/' + id + '/show')
     }
 }

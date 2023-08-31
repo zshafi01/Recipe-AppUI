@@ -1,0 +1,86 @@
+<div class="container my-5">
+    <div class="card" style="width: 50rem; padding: 20px;">
+        <form class="example-form" #recipeForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-Group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" #recipeName="ngModel" name="title"
+                    [(ngModel)]="recipe.title" required>
+                <mat-error *ngIf="recipeName.touched && recipeName.hasError('required')" class="text-danger">Recipe Name
+                    is requeried!</mat-error>
+            </div>
+            <div class="form-Group">
+                <label for="description" class="form-label">Recipe Description!</label>
+                <textarea type="text" class="form-control" id="description" #recipeDescription="ngModel"
+                    name="description" [(ngModel)]="recipe.description" rows="3" maxlength="255" required></textarea>
+                <mat-error *ngIf="recipeDescription.value?.length == 255" class="text-danger"> only 255 charactors
+                    allowed!</mat-error>
+                <mat-error *ngIf="recipeDescription.touched && recipeDescription.hasError('required')"
+                    class="text-danger">Recipe description is requeried</mat-error>
+                <mat-hint>{{recipeDescription.value?.length || 0}}/255</mat-hint>
+
+            </div>
+            <div class="form-Group">
+                <label for="prepTime" class="form-label">PrepTime</label>
+                <input type="text" class="form-control" id="prepTime" #prepTime="ngModel" name="prepTime"
+                    [(ngModel)]="recipe.prepTime" required>
+                <mat-error *ngIf="prepTime.touched && prepTime.hasError('required')" class="text-danger"> PrepTime is
+                    requeried!</mat-error>
+            </div>
+            <div class="form-Group">
+                <label for="cookTime" class="form-label">CookTime</label>
+                <input type="text" class="form-control" id="cookTime" #cookTime="ngModel" name="cookTime"
+                    [(ngModel)]="recipe.cookTime" required>
+                <mat-error *ngIf="cookTime.touched && cookTime.hasError('required')" class="text-danger">CookTime is
+                    requeried!</mat-error>
+            </div>
+            <div class="form-Group">
+                <label for="source" class="form-label">Source</label>
+                <input type="text" class="form-control" id="source" #source="ngModel" name="source"
+                    [(ngModel)]="recipe.source" required>
+                <mat-error *ngIf="source.touched && source.hasError('required')" class="text-danger">Source is requeried!
+                </mat-error>
+            </div>
+            <div class="form-Group">
+                <label for="thumbnail" class="form-label">Thumbnail</label>
+                <input type="text" class="form-control" id="thumbnail" #thumbnail="ngModel" name="thumbnail"
+                    [(ngModel)]="recipe.thumbnail" required>
+                <mat-error *ngIf="thumbnail.touched && thumbnail.hasError('required')" class="text-danger">Image is requeried!</mat-error>
+            </div>
+            <div class="form-Group">
+                <label for="difficulty" class="form-label">Difficulty</label>
+                <select [(ngModel)]="recipe.difficulty" name="diffeculty" class="form-control"
+                    aria-label="Default select example" #diffeculty="ngModel" required>
+                    <option value="undefined" selected>Select Category</option>
+                    <option *ngFor="let diffeculty of diffeculties" [value]="diffeculty">
+                        {{diffeculty| titlecase}}</option>
+                </select>
+                <mat-error *ngIf="diffeculty.touched && diffeculty.hasError('required')" class="text-danger">Difficulty should be selected!</mat-error>
+            </div>
+            <div class="form-Group">
+                <!-- <mat-form-field style="width: 100%;">
+                    <mat-label>Category</mat-label>
+                    <mat-select [(ngModel)]="recipe.category" name="categoryName">
+                        <mat-option value="" selected>Select Category</mat-option>
+                        <mat-option *ngFor="let category of categories" [value]="category.id">
+                            {{category.name}}</mat-option>
+
+                    </mat-select>
+                </mat-form-field> -->
+                <label for="category" class="form-label">Category</label>
+                <select [(ngModel)]="recipe.category" name="categoryName" class="form-control"
+                    aria-label="Default select example" #category="ngModel" required>
+                    <option value="undefined" selected>Select Category</option>
+                    <option *ngFor="let category of categories" [value]="category.id">
+                        {{category.name}}</option>
+                </select>
+                <mat-error *ngIf="category.touched && category.hasError('required')" class="text-danger">category should be selected! </mat-error>
+
+            </div>
+
+            <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="!recipeForm.valid">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- ingredientSet!: Ingredient[];
+    category!:number; -->

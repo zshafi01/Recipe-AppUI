@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Recipe } from './models/recipe';
 import { UnitOfMeasure } from './models/unit-of-measure';
+import { AddRecipeComponent } from './Pages/add-recipe/add-recipe.component';
 import { AddUnitOfMeasureComponent } from './Pages/add-unit-of-measure/add-unit-of-measure.component';
 import { AdminAddCategoryComponent } from './Pages/admin-add-category/admin-add-category.component';
 import { AdminCategoriesComponent } from './Pages/admin-categories/admin-categories.component';
@@ -9,16 +11,19 @@ import { CategoryDetailsComponent } from './Pages/category-details/category-deta
 import { HomeComponent } from './Pages/home/home.component';
 import { PagenotfoundComponent } from './Pages/pagenotfound/pagenotfound.component';
 import { UnitOfMeasuresComponent } from './Pages/unit-of-measures/unit-of-measures.component';
+import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/update-unit-of-measure.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'', redirectTo:'home',pathMatch:'full'}, 
+  {path:'add-recipe', component:AddRecipeComponent},
   {path:'add-category', component:AdminAddCategoryComponent},
   {path:'categories', component:AdminCategoriesComponent},
   {path:'category/detail/:id', component:CategoryDetailsComponent},
   {path:'category/:id',component:AdminCategoryUpdateComponent},
   {path:'add-unitofmeasure', component:AddUnitOfMeasureComponent},
   {path:'unitofmeasures', component:UnitOfMeasuresComponent},
+  {path:'unitofmeasure/:id', component:UpdateUnitOfMeasureComponent},
   {path:'**',component:PagenotfoundComponent},
   
 
