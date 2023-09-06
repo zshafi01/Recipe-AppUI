@@ -9,6 +9,6 @@ export class Recipe {
     source!:string;
     thumbnail!:string;
     difficulty!:string;
-    ingredientSet!: Ingredient[];
+    ingredientSet: Ingredient[]= [];
     category!:number;
 }

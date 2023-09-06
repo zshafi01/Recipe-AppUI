@@ -9,7 +9,7 @@
                     is requeried!</mat-error>
             </div>
             <div class="form-Group">
-                <label for="description" class="form-label">Recipe Description!</label>
+                <label for="description" class="form-label">Recipe Description</label>
                 <textarea type="text" class="form-control" id="description" #recipeDescription="ngModel"
                     name="description" [(ngModel)]="recipe.description" rows="3" maxlength="255" required></textarea>
                 <mat-error *ngIf="recipeDescription.value?.length == 255" class="text-danger"> only 255 charactors
@@ -37,15 +37,109 @@
                 <label for="source" class="form-label">Source</label>
                 <input type="text" class="form-control" id="source" #source="ngModel" name="source"
                     [(ngModel)]="recipe.source" required>
-                <mat-error *ngIf="source.touched && source.hasError('required')" class="text-danger">Source is requeried!
+                <mat-error *ngIf="source.touched && source.hasError('required')" class="text-danger">Source is
+                    requeried!
                 </mat-error>
             </div>
             <div class="form-Group">
                 <label for="thumbnail" class="form-label">Thumbnail</label>
                 <input type="text" class="form-control" id="thumbnail" #thumbnail="ngModel" name="thumbnail"
                     [(ngModel)]="recipe.thumbnail" required>
-                <mat-error *ngIf="thumbnail.touched && thumbnail.hasError('required')" class="text-danger">Image is requeried!</mat-error>
+                <mat-error *ngIf="thumbnail.touched && thumbnail.hasError('required')" class="text-danger">Image is
+                    requeried!</mat-error>
             </div>
+            <div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add Ingredient
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ingredient Form</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-Group">
+                                    <label for="ingredientName" class="form-label">name</label>
+                                    <input type="text" class="form-control" id="name" #ingredientName="ngModel"
+                                        name="name" [(ngModel)]="ingredient.name" required>
+                                    <mat-error *ngIf="ingredientName.touched && ingredientName.hasError('required')"
+                                        class="text-danger">Name is
+                                        requeried!</mat-error>
+                                </div>
+                                <div class="form-Group">
+                                    <label for="ingrediantDescription" class="form-label">description</label>
+                                    <input type="text" class="form-control" id="ingrediantDescription"
+                                        #ingrediantDescription="ngModel" name="description"
+                                        [(ngModel)]="ingredient.description" required>
+                                    <mat-error
+                                        *ngIf="ingrediantDescription.touched && ingrediantDescription.hasError('required')"
+                                        class="text-danger">Description is
+                                        requeried!</mat-error>
+                                </div>
+                                <div class="form-Group">
+                                    <label for="amount" class="form-label">amount</label>
+                                    <input type="number" class="form-control" id="amount" #amount="ngModel"
+                                        name="amount" [(ngModel)]="ingredient.amount" required>
+                                    <mat-error *ngIf="amount.touched && amount.hasError('required')"
+                                        class="text-danger">Amount is
+                                        requeried!</mat-error>
+                                </div>
+                                <!-- <div class="form-Group">
+                                    <label for="uom" class="form-label">Unit of Measure</label> -->
+                                <!-- <input type="text" class="form-control" id="uom" #unitOfMeasure="ngModel" name="unitOfMeasure"
+                                        [(ngModel)]="ingredient.unitOfMeasure" required> -->
+                                <!-- <select [(ngModel)]="ingredient.unitOfMeasure" name="unitOfMeasure"
+                                        class="form-control" aria-label="Default select example"
+                                        #unitOfMeasure="ngModel" required>
+                                        <option value="undefined" selected>Select unitOfMeasure</option>
+                                        <option *ngFor="let unitOfMeasure of unitOfMeasures" [value]="unitOfMeasure.id">
+                                            {{unitOfMeasure.name}}</option>
+                                    </select>
+                                    <mat-error *ngIf="unitOfMeasure.touched && unitOfMeasure.hasError('required')"
+                                        class="text-danger">unitOfMeasure is
+                                        requeried!</mat-error>
+                                </div>-->
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #myModalClose>Close</button>
+                                <button type="button" class="btn btn-primary" (click)="onIngrediantAdd()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- list of ingradient ===================================== -->
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of recipe.ingredientSet">
+                        <td>{{i?.name}}</td>
+                        <td>{{i?.description}}</td>
+                        <td>{{i?.amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
             <div class="form-Group">
                 <label for="difficulty" class="form-label">Difficulty</label>
                 <select [(ngModel)]="recipe.difficulty" name="diffeculty" class="form-control"
@@ -54,7 +148,8 @@
                     <option *ngFor="let diffeculty of diffeculties" [value]="diffeculty">
                         {{diffeculty| titlecase}}</option>
                 </select>
-                <mat-error *ngIf="diffeculty.touched && diffeculty.hasError('required')" class="text-danger">Difficulty should be selected!</mat-error>
+                <mat-error *ngIf="diffeculty.touched && diffeculty.hasError('required')" class="text-danger">Difficulty
+                    should be selected!</mat-error>
             </div>
             <div class="form-Group">
                 <!-- <mat-form-field style="width: 100%;">
@@ -73,9 +168,12 @@
                     <option *ngFor="let category of categories" [value]="category.id">
                         {{category.name}}</option>
                 </select>
-                <mat-error *ngIf="category.touched && category.hasError('required')" class="text-danger">category should be selected! </mat-error>
+                <mat-error *ngIf="category.touched && category.hasError('required')" class="text-danger">category should
+                    be selected! </mat-error>
 
             </div>
+
+
 
             <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="!recipeForm.valid">Submit</button>
         </form>
