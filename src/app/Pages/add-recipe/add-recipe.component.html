@@ -48,14 +48,14 @@
                 <mat-error *ngIf="thumbnail.touched && thumbnail.hasError('required')" class="text-danger">Image is
                     requeried!</mat-error>
             </div>
-            <div>
+            <!-- <div> -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Add Ingredient
-                </button>
+                </button> -->
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -90,7 +90,7 @@
                                     <mat-error *ngIf="amount.touched && amount.hasError('required')"
                                         class="text-danger">Amount is
                                         requeried!</mat-error>
-                                </div>
+                                </div> -->
                                 <!-- <div class="form-Group">
                                     <label for="uom" class="form-label">Unit of Measure</label> -->
                                 <!-- <input type="text" class="form-control" id="uom" #unitOfMeasure="ngModel" name="unitOfMeasure"
@@ -106,8 +106,8 @@
                                         class="text-danger">unitOfMeasure is
                                         requeried!</mat-error>
                                 </div>-->
-                            </div>
-
+                            <!-- </div> -->
+<!-- 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #myModalClose>Close</button>
                                 <button type="button" class="btn btn-primary" (click)="onIngrediantAdd()">Add</button>
@@ -115,9 +115,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- list of ingradient ===================================== -->
-            <table class="table table-bordered mt-3">
+            <!-- <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
                         <th>
@@ -139,7 +139,7 @@
                         <td>{{i?.amount}}</td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
             <div class="form-Group">
                 <label for="difficulty" class="form-label">Difficulty</label>
                 <select [(ngModel)]="recipe.difficulty" name="diffeculty" class="form-control"
