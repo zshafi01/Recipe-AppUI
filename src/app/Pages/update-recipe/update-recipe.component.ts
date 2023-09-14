@@ -1,18 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { Ingredient } from 'src/app/models/ingredient';
 import { Recipe } from 'src/app/models/recipe';
 import { UnitOfMeasure } from 'src/app/models/unit-of-measure';
-import { RegistrationBackendService } from 'src/app/services/registration-backend.service';
+import { UpdateBackendService } from 'src/app/services/update-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
-  selector: 'app-add-recipe',
-  templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.css']
+  selector: 'app-update-recipe',
+  templateUrl: './update-recipe.component.html',
+  styleUrls: ['./update-recipe.component.css']
 })
-export class AddRecipeComponent implements OnInit {
+export class UpdateRecipeComponent implements OnInit{
   pageNumber:number=0;
   pageSize:number=5;
   keyword:string='';
@@ -22,18 +22,18 @@ export class AddRecipeComponent implements OnInit {
   ingredient:Ingredient= new Ingredient();
   unitOfMeasures:UnitOfMeasure[]=[];
   unitOfMeasureDetail:UnitOfMeasure= new UnitOfMeasure();
+  id:number=0;
   
   diffeculties:string[]=['EASY', 'MODERATE', 'KIND_OF_HARD', 'HARD'];
 
-  
-  constructor(private registor:RegistrationBackendService, private view:ViewBackendService, private router:Router){}
 
-  
+
+  constructor(private update:UpdateBackendService,private view:ViewBackendService, private router:Router, private route:ActivatedRoute){}
   ngOnInit(): void {
     this.getAllCategories(this.keyword, this.pageNumber, this.pageSize);
-    this.getAllUnitOfMeasures(this.keyword, this.pageNumber, this.pageSize);
+    this.id=this.route.snapshot.params['id'];
+    this.getRecipeById(this.id);
   }
-
   getAllCategories(keyword:string, pageNumber:number, pageSize:number){
     this.view.getAllCategoriesPageable(keyword,pageNumber,pageSize).subscribe({
       next:(data)=>{
@@ -49,34 +49,21 @@ export class AddRecipeComponent implements OnInit {
 
     
   }
-  getAllUnitOfMeasures(keyword:string,pageNumber:number,pageSize:number){
-    this.view.getAllUnitOfMeasurePageable(keyword,pageNumber,pageSize).subscribe({
+  getRecipeById(id:number){
+    this.view.getRecipeById(id).subscribe({
       next:(data)=>{
-        this.unitOfMeasures = data['content'];
-        console.log(data);
+        this.recipe=data;
 
       },
       error:(error)=>{
         console.error(error);
       }
-      
+
     })
   }
 
-  getUnitOfMeasureById(id:number){
-    this.view.publicUnitOfMeasureById(id).subscribe({
-      next:(data)=>{
-        this.unitOfMeasureDetail=data;
-        console.log(data);
-      },
-      error:(error)=>{
-        console.error(error)
-      }
-    })
-  
-  }
-  onSubmit(){
-    this.registor.registorRecipe(this.recipe).subscribe({
+  onUpdateSubmit(){
+    this.update.updateRecipe(this.recipe).subscribe({
       next:(data)=>{
         this.recipe =data as Recipe;
         this.router.navigate(['/recipe/'+ this.recipe.id +'/detail']);
@@ -89,4 +76,5 @@ export class AddRecipeComponent implements OnInit {
     })
   }
 
-}
+  }
+

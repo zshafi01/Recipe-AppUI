@@ -1,6 +1,6 @@
 <div class="container my-5">
     <div class="card" style="width: 50rem; padding: 20px;">
-        <form class="example-form" #recipeForm="ngForm" (ngSubmit)="onSubmit()">
+        <form class="example-form" #recipeForm="ngForm" (ngSubmit)="onUpdateSubmit()">
             <div class="form-Group">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" #recipeName="ngModel" name="title"
@@ -84,7 +84,7 @@
 
 
 
-            <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="!recipeForm.valid">Submit</button>
+            <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="!recipeForm.valid">Update</button>
         </form>
     </div>
 </div>
