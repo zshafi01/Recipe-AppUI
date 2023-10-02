@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   pageSize:number=6;
   keyword:string='';
   length:number=0;
+  pageSizeOptions = [5, 10, 25];
+
 
   constructor(private viewBackend:ViewBackendService){ }
   recipes:Recipe[] =[];
@@ -34,6 +36,11 @@ getAllRecipesPagebale(keyword:string,pageNumber:number,pageSize:number){
     }
   })
 
+}
+handlePageEvent(event: any) {
+  this.pageNumber = event.pageIndex;
+  this.pageSize = event.pageSize;
+  this.getAllRecipesPagebale(this.keyword,this.pageNumber, this.pageSize);
 }
 
 

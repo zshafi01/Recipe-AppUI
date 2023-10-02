@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
+import { Contact } from '../models/contact';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,12 @@ export class DeleteBackendService {
     public deleteUnitOfMeasureById(id:number):Observable<Object>{
       return this.httpClient.get(this.adminUrl + '/unitofmeasure/' + id + '/delete')
     }
+    public updateDeleteStatus(id:number, isDeleted:boolean):Observable<Contact>{
+      return this.httpClient.get<Contact>(this.adminUrl + '/contact/' + id + '/trash?isDeleted='+ isDeleted)
+
+    }
+    public deleteContactById(id:number):Observable<any>{
+      return this.httpClient.get<any>(this.adminUrl + '/contact/' + id + '/delete')
+    }
+
 }

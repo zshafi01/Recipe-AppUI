@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
+import { Contact } from '../models/contact';
 import { Newsletter } from '../models/newsletter';
 import { Recipe } from '../models/recipe';
 import { UnitOfMeasure } from '../models/unit-of-measure';
+import { ContactUsComponent } from '../Pages/contact-us/contact-us.component';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +36,11 @@ export class RegistrationBackendService {
     }
     public registorRecipe(recipe: Recipe):Observable<Object>{
       return this.httpClient.post(this.userUrl + '/recipe', recipe)
+    }
+    public registorContact(contact: Contact):Observable<Object>{
+      return this.httpClient.post(this.publicUrl + '/contact', contact)
+    }
+    public sendEmailToUs(contact: Contact):Observable<Object>{
+      return this.httpClient.post(this.publicUrl + '/sendemail', contact)
     }
 }

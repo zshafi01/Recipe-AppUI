@@ -20,7 +20,7 @@ export class UpdateUnitOfMeasureComponent implements OnInit {
     this.getUnitOfMeasureById(this.id);
   }
   getUnitOfMeasureById(id:number){
-    this.view.publicUnitOfMeasureById(id).subscribe({
+    this.view.getUnitOfMeasureById(id).subscribe({
       next:(data)=>{
       this.uom = data;
       },

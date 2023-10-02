@@ -1,0 +1,20 @@
+.navbar-nav .nav-item .nav-link {
+    font-size: 14px;
+    color: #252525;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    -webkit-transition: all, 0.3s;
+    -moz-transition: all, 0.3s;
+    -ms-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    padding: 0px 20px;
+    display: block;
+}
+.navbar-nav .nav-item .nav-link:hover {
+   color: #FE6338;
+}
+.list-item-active {
+    color: #FE6338 !important;
+}

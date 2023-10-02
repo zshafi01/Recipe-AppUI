@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <div class="card" style="width: 50rem; padding: 20px;">
+    <div class="card" style="width: 50rem; padding: 20px;"> 
         <form class="example-form" #recipeForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-Group">
                 <label for="title" class="form-label">Title</label>
@@ -42,13 +42,26 @@
                 </mat-error>
             </div>
             <div class="form-Group">
-                <label for="thumbnail" class="form-label">Thumbnail</label>
-                <input type="text" class="form-control" id="thumbnail" #thumbnail="ngModel" name="thumbnail"
-                    [(ngModel)]="recipe.thumbnail" required>
-                <mat-error *ngIf="thumbnail.touched && thumbnail.hasError('required')" class="text-danger">Image is
-                    requeried!</mat-error>
+                <label for="thumbnail" class="form-label">Thumbnail</label><br>
+                <!-- <input type="text" class="form-control" id="thumbnail" #thumbnail="ngModel" name="thumbnail"
+                    [(ngModel)]="recipe.thumbnail" required> -->
+                <input type="file" (change)="onFileChange($event)" class="form-control" id="thumbnail"
+                    name="thumbnail"><br>
+                <div class="d-flex align-items-center">
+                    <div *ngIf="percentage | async as p">
+                        <div class="d-inline-block">
+                            <h4>{{fileName}} {{fileSize}} mb</h4>
+                            <progress class="progress primary-green-color" [value]="p" max="100"></progress>
+                            <h6>{{p | number}}%</h6>
+                        </div>
+
+                    </div>
+                </div>
+                <img [src]="recipe.thumbnail" width="100">
+                <!-- <mat-error *ngIf="thumbnail.touched && thumbnail.hasError('required')" class="text-danger">Image is
+                    requeried!</mat-error> -->
             </div>
-           
+
             <div class="form-Group">
                 <label for="difficulty" class="form-label">Difficulty</label>
                 <select [(ngModel)]="recipe.difficulty" name="diffeculty" class="form-control"
@@ -81,10 +94,12 @@
                     be selected! </mat-error>
 
             </div>
+            <button mat-button type="submit" class="btn btn-primary my-3"
+                [disabled]="recipeForm.invalid">Submit</button>
 
 
 
-            <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="!recipeForm.valid">Submit</button>
+            <!-- <button mat-button type="submit" class="btn btn-primary my-3" [disabled]="recipeForm.invalid || percentage | async != 100">Submit</button> -->
         </form>
     </div>
 </div>

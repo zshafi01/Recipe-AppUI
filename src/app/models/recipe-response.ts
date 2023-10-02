@@ -1,6 +1,7 @@
+import { Category } from "./category";
 import { Ingredient } from "./ingredient";
 
-export class Recipe {
+export class RecipeResponse {
     id!:number;
     title!:string;
     description!:string;
@@ -10,6 +11,6 @@ export class Recipe {
     thumbnail!:string;
     difficulty!:string;
     ingredientSet: Ingredient[]= [];
-    category!:number;
+    categorySet:Category[]=[];
     
 }

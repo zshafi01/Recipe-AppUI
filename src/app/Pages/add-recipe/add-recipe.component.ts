@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
+import { async } from '@firebase/util';
+import { finalize, map, Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { Ingredient } from 'src/app/models/ingredient';
 import { Recipe } from 'src/app/models/recipe';
@@ -21,12 +24,21 @@ export class AddRecipeComponent implements OnInit {
   categories:Category[]=[];
   ingredient:Ingredient= new Ingredient();
   unitOfMeasures:UnitOfMeasure[]=[];
-  unitOfMeasureDetail:UnitOfMeasure= new UnitOfMeasure();
-  
+  unitOfMeasureDetail:UnitOfMeasure= new UnitOfMeasure();  
   diffeculties:string[]=['EASY', 'MODERATE', 'KIND_OF_HARD', 'HARD'];
+  title = 'angular-firebase';
+  percentage:Observable<number|undefined>;
+  uploadTask:AngularFireUploadTask;
+  snapshot:Observable<any>;
+  downloadUrl:Observable<string>;
+  isComplated:Observable<boolean>;
+  file!:File;
+  fileName:string;
+  fileSize:number =0;
+  // thumnail:string= '';
 
   
-  constructor(private registor:RegistrationBackendService, private view:ViewBackendService, private router:Router){}
+  constructor(private registor:RegistrationBackendService, private view:ViewBackendService, private router:Router, private fireStorage:AngularFireStorage){}
 
   
   ngOnInit(): void {
@@ -44,11 +56,8 @@ export class AddRecipeComponent implements OnInit {
       error:(error)=>{
         console.error(error);
       }
-
     })
-
-    
-  }
+    }
   getAllUnitOfMeasures(keyword:string,pageNumber:number,pageSize:number){
     this.view.getAllUnitOfMeasurePageable(keyword,pageNumber,pageSize).subscribe({
       next:(data)=>{
@@ -59,12 +68,11 @@ export class AddRecipeComponent implements OnInit {
       error:(error)=>{
         console.error(error);
       }
-      
-    })
+          })
   }
 
   getUnitOfMeasureById(id:number){
-    this.view.publicUnitOfMeasureById(id).subscribe({
+    this.view.getUnitOfMeasureById(id).subscribe({
       next:(data)=>{
         this.unitOfMeasureDetail=data;
         console.log(data);
@@ -88,5 +96,43 @@ export class AddRecipeComponent implements OnInit {
       }
     })
   }
-
+   onFileChange(event:any){
+    this.file= event.target.files[0];
+      if (this.file){
+      console.log(this.file);
+      this.fileName = this.file.name;
+      this.fileSize= Math.round(this.file.size / 1048576);
+      const currentYear = new Date().getFullYear();
+      // const dateTime = new Date();
+      const path= `recipe-images/${currentYear}/${this.file.name}`;
+      const ref=this.fireStorage.ref(path);
+      this.uploadTask = this.fireStorage.upload(path, this.file);
+      this.percentage = this.uploadTask.percentageChanges();
+      this.isComplated =this.percentage.pipe(map(percentage=>percentage === 100))
+      this.uploadTask.then(()=>{
+        this.downloadUrl= ref.getDownloadURL();
+        this.downloadUrl.subscribe(url=> {
+          console.log("downloadUrl:", url);
+          this.recipe.thumbnail = url;
+        })
+        
+        
+      }
+      )
+      // this.snapshot = this.uploadTask.snapshotChanges().pipe(
+      //   finalize(async()=>{
+      //     const url= await ref.getDownloadURL().toPromise();
+      //     console.log(url);
+      //     this.recipe.thumbnail =url;
+      //   }
+      //   )
+      // )
+      
+      // const url=  this.uploadTask.ref.getDownloadURL();
+      // console.log(url);
+      // this.recipe.thumbnail = url;
+    }
+    
+  }
 }
+

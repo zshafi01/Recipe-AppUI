@@ -52,7 +52,7 @@ export class UpdateRecipeComponent implements OnInit{
   getRecipeById(id:number){
     this.view.getRecipeById(id).subscribe({
       next:(data)=>{
-        this.recipe=data;
+        // this.recipe=data;
 
       },
       error:(error)=>{
@@ -63,17 +63,17 @@ export class UpdateRecipeComponent implements OnInit{
   }
 
   onUpdateSubmit(){
-    this.update.updateRecipe(this.recipe).subscribe({
-      next:(data)=>{
-        this.recipe =data as Recipe;
-        this.router.navigate(['/recipe/'+ this.recipe.id +'/detail']);
+    // this.update.updateRecipe(this.recipe).subscribe({
+    //   next:(data)=>{
+    //     this.recipe =data as Recipe;
+    //     this.router.navigate(['/recipe/'+ this.recipe.id +'/detail']);
 
 
-      },
-      error:(error)=>{
-        console.error(error);
-      }
-    })
+    //   },
+    //   error:(error)=>{
+    //     console.error(error);
+    //   }
+    // })
   }
 
   }

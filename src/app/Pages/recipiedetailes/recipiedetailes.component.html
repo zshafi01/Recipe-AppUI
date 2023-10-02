@@ -1,38 +1,41 @@
 <div class="container">
-    <a [routerLink]="'/recipe/'+recipe.id" class="btn btn-outline-success float-end my-5"><i class="fa fa-edit"></i> Edit </a>
+    <a [routerLink]="'/recipe/'+recipe.id" class="btn btn-outline-success float-end my-5"><i class="fa fa-edit"></i>
+        Edit </a>
 
     <section class="member-details">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4">
                     <div class="img-container">
-                        <img [src]="recipe.thumbnail"
-                            alt="recipeImage" class="img-full">
+                        <img [src]="recipe.thumbnail" alt="recipeImage" class="img-full">
                     </div>
                 </div>
 
                 <div class="col-lg-9 col-md-8">
                     <div class="member_designation">
                         <h2>{{recipe.title}}</h2>
-                        <span>Category Name</span>
+                        <span>{{recipe.categorySet[0]?.name}}</span>
                     </div>
                     <div class="member_desc">
                         <p>
                             {{recipe.description}}
                         </p>
                         <ul class="styled_list">
-                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Difficulty: {{recipe.difficulty}}
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Difficulty:
+                                {{recipe.difficulty}}
                             </li>
-                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> PrepTime: {{recipe.prepTime}}
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> PrepTime:
+                                {{recipe.prepTime}}
                             </li>
-                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> CookingTime: {{recipe.cookTime}}
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> CookingTime:
+                                {{recipe.cookTime}}
                             </li>
                         </ul>
                     </div>
                     <div>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"  #myModalOpen>
+                            data-bs-target="#exampleModal" #myModalOpen>
                             Add Ingredient
                         </button>
 
@@ -105,6 +108,9 @@
                         <thead>
                             <tr>
                                 <th>
+                                    #
+                                </th>
+                                <th>
                                     Name
                                 </th>
                                 <th>
@@ -121,14 +127,91 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let ingredient of recipe.ingredientSet">
+                                <td>{{ingredient?.id}}</td>
                                 <td>{{ingredient?.name}}</td>
                                 <td>{{ingredient?.description}}</td>
                                 <td>{{ingredient?.amount}}</td>
-                                <td> 
-                                     <a (click)="updateIngredient(ingredient.id)" class="btn"><i class="fa fa-edit"></i> Edit </a> 
-                                    <a (click)="onDelete(ingredient.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i> Delete </a></td>
-                                
-                            </tr> 
+                                <td>
+                                    <a (click)="onOpenUpdateIngredientModal(ingredient.id)" class="btn"
+                                        data-bs-toggle="modal" data-bs-target="#updateIngredientModal"
+                                        #myUpdateIngredientModalOpen><i class="fa fa-edit"></i>
+                                        Edit </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="updateIngredientModal" tabindex="-1"
+                                        aria-labelledby="updateIngredientModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="updateIngredientModalLabel">Update
+                                                        Ingredient Form</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form #updateIngredientChange="ngForm">
+                                                    <div class="form-Group">
+                                                        <label for="ingredientName" class="form-label">name</label>
+                                                        <input type="text" class="form-control" id="iname"
+                                                            #ingredientName="ngModel" name="name"
+                                                            [(ngModel)]="ingredient.name" required>
+                                                        <mat-error
+                                                            *ngIf="ingredientName.touched && ingredientName.hasError('required')"
+                                                            class="text-danger">Name is
+                                                            requeried!</mat-error>
+                                                    </div>
+                                                    <div class="form-Group">
+                                                        <label for="ingrediantDescription"
+                                                            class="form-label">description</label>
+                                                        <input type="text" class="form-control"
+                                                            id="iDescription" #ingrediantDescription="ngModel"
+                                                            name="description" [(ngModel)]="ingredient.description"
+                                                            required>
+                                                        <mat-error
+                                                            *ngIf="ingrediantDescription.touched && ingrediantDescription.hasError('required')"
+                                                            class="text-danger">Description is
+                                                            requeried!</mat-error>
+                                                    </div>
+                                                    <div class="form-Group">
+                                                        <label for="amount" class="form-label">amount</label>
+                                                        <input type="number" class="form-control" id="iamount"
+                                                            #amount="ngModel" name="amount"
+                                                            [(ngModel)]="ingredient.amount" required>
+                                                        <mat-error *ngIf="amount.touched && amount.hasError('required')"
+                                                            class="text-danger">Amount is
+                                                            requeried!</mat-error>
+                                                    </div>
+                                                    <!-- <div class="form-Group">
+                                <label for="uom" class="form-label">Unit of Measure</label> -->
+                                                    <!-- <input type="text" class="form-control" id="uom" #unitOfMeasure="ngModel" name="unitOfMeasure"
+                                    [(ngModel)]="ingredient.unitOfMeasure" required> -->
+                                                    <!-- <select [(ngModel)]="ingredient.unitOfMeasure" name="unitOfMeasure"
+                                    class="form-control" aria-label="Default select example"
+                                    #unitOfMeasure="ngModel" required>
+                                    <option value="undefined" selected>Select unitOfMeasure</option>
+                                    <option *ngFor="let unitOfMeasure of unitOfMeasures" [value]="unitOfMeasure.id">
+                                        {{unitOfMeasure.name}}</option>
+                                </select>
+                                <mat-error *ngIf="unitOfMeasure.touched && unitOfMeasure.hasError('required')"
+                                    class="text-danger">unitOfMeasure is
+                                    requeried!</mat-error>
+                            </div>-->
+                            </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal"
+                                                        #myIngredientUpdateModalClose>Close</button>
+                                                    <button type="button" class="btn btn-primary"
+                                                        (click)="onIngrediantUpdate()">Save Changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a (click)="onDelete(ingredient.id)" class="btn btn-block text-nowrap"><i
+                                            class="fa fa-trash"></i> Delete </a>
+                                </td>
+
+                            </tr>
                         </tbody>
                     </table>
 

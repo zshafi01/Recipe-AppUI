@@ -8,3 +8,7 @@
 .btn-primary:hover{
     background-color: black;
 }
+
+a:hover{
+   color: #FE6338 !important;
+}
