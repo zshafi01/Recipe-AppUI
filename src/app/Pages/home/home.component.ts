@@ -28,7 +28,6 @@ getAllRecipesPagebale(keyword:string,pageNumber:number,pageSize:number){
       this.recipes=data['content'];
       this.length=data['totalElements'];
       console.log(this.recipes);
-
       
     },
     error:(error)=>{

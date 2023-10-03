@@ -38,16 +38,22 @@
         </thead>
         <tbody>
             <tr *ngFor="let contact of contacts">
-                <td>{{contact.subject}}</td>
-                <td>{{contact.message.length>60?(contact.message|slice:0:60) + '...' :(contact.message)}}</td>
-                <td>{{contact.createdOn|date}}</td>
+                <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">{{contact.subject}}</td>
+                <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">{{contact.message.length>60?(contact.message|slice:0:60) + '...' :(contact.message)}}</td>
+                <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">{{contact.createdOn|date}}</td>
                 <td>
                     <div>
-                        <a [routerLink]=" '/contact/detail/' + contact.id " class="btn" class="btn"><i
+                        <!-- <a [routerLink]=" '/contact/detail/' + contact.id " class="btn" class="btn"><i
                                 class="fa fa-eye"></i> View
+                        </a>  to redirect only using template-->
+                        <a (click)="onViewClickHandler(contact.id)" class="btn btn-block text-nowrap"><i class="fa fa-eye"></i>
+                            View
                         </a>
+
                         <a (click)="onDelete(contact.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash"></i>
                             Delete </a>
+                            <a (click)="onMoveOutOfTrash(contact.id)" class="btn btn-block text-nowrap"><i class="fa-solid fa-trash-can-arrow-up"></i>
+                                Out Of Trash </a>
                     </div>
 
                 </td>

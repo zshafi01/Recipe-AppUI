@@ -4,6 +4,7 @@ export class Contact {
     subject!:string;
     email!:string;
     phone!:string;
+    isViewed!:boolean;
     message!:string;
     createdOn!:Date;
 

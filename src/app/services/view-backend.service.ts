@@ -56,8 +56,11 @@ export class ViewBackendService   {
     public getContactById(id:number):Observable<Contact>{
       return this.httpClient.get<Contact>(this.adminUrl + '/contact/' + id + '/show')
     }
-    public getCountTotalEmail(isDeleted:boolean):Observable<number>{
-      return this.httpClient.get<number>(this.adminUrl + '/count-email?isDeleted=' +isDeleted)
+    public getCountTotalEmail(isDeleted:boolean, isViewed:boolean):Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl + '/count-email?isDeleted=' +isDeleted +"&isViewed=" +isViewed)
+    }
+    public getContactByViewStatus(id:number, isViewed:boolean):Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl + '/view/' + id +"?isViewed=" +isViewed)
     }
     
 }
