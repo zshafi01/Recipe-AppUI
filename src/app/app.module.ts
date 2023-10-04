@@ -34,6 +34,7 @@ import { AdminInboxComponent } from './Pages/admin-inbox/admin-inbox.component';
 import { AdminDeletedInboxComponent } from './Pages/admin-deleted-inbox/admin-deleted-inbox.component';
 import { ContactDetailsComponent } from './Pages/contact-details/contact-details.component';
 import { AdminTrashComponent } from './Pages/admin-trash/admin-trash.component';
+import { AdminFavoriteComponent } from './admin-favorite/admin-favorite.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { AdminTrashComponent } from './Pages/admin-trash/admin-trash.component';
     AdminDeletedInboxComponent,
     ContactDetailsComponent,
     AdminTrashComponent,
+    AdminFavoriteComponent,
     
   ],
   imports: [

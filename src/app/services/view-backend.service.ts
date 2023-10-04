@@ -62,5 +62,11 @@ export class ViewBackendService   {
     public getContactByViewStatus(id:number, isViewed:boolean):Observable<number>{
       return this.httpClient.get<number>(this.adminUrl + '/view/' + id +"?isViewed=" +isViewed)
     }
+    public getCountAllEmail():Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl + '/count-all-email')
+    }
+    public getAllFavoriteEmail(isFavorite:boolean):Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl+ '/favorite-email' +"?isFavorite=" + isFavorite)
+    }
     
 }

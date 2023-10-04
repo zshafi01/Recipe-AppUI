@@ -19,6 +19,8 @@ export class AdminInboxComponent implements OnInit{
   keyword:string= "";
   countTrash:number=0;
   countInbox:number=0;
+  countAll:number =0;
+  countFavorite:number =0;
   isViewed:boolean=false
   length = 5;
   pageSizeOptions = [5, 10, 25];
@@ -31,7 +33,9 @@ export class AdminInboxComponent implements OnInit{
     // this.getAllContactByDeleteStatus(this.isDeleted, this.pageNumber, this.pageSize);
     this.getAllContactByDeleteStatusAndKeyword(this.isDeleted,this.keyword,this.pageNumber, this.pageSize);
     this.countTotalEmail();
-    this. countTotalTrashEmail();   
+    this. countTotalTrashEmail();  
+    this.countAllEmail();
+    this.countAllFavoiteEmail(true)
   }
 
   // getAllContactByDeleteStatus(isDeleted:boolean, pageNumber:number, pageSize:number){
@@ -47,11 +51,9 @@ export class AdminInboxComponent implements OnInit{
   // }
   getAllContactByDeleteStatusAndKeyword(isDeleted:boolean,keyword:string, pageNumber:number, pageSize:number){
     this.view.getAllContactByisDeleteStatusAndKeyword(isDeleted,keyword,pageNumber,pageSize).subscribe({
-      next:(data)=>{
-        
+      next:(data)=>{     
         this.contacts= data['content'];
-        this.length=data['totalElements'];
-        
+        this.length=data['totalElements'];        
       },
       error:(error)=>{
         console.error(error);
@@ -121,6 +123,38 @@ export class AdminInboxComponent implements OnInit{
     this.pageSize = event.pageSize;
     this.getAllContactByDeleteStatusAndKeyword(this.isDeleted,this.keyword,this.pageNumber, this.pageSize);
   }
+
+  onRefresh(){
+    this.ngOnInit();
+  }
+  onClickView(id:number){
+    this.onViewStatusUpdate(id, true);
+    this.router.navigate(['/contact/detail/' + id]);        
+  }
+  countAllEmail(){
+    this.view.getCountAllEmail().subscribe({
+      next:(data)=>{
+        this.countAll = data;
+      },
+      error:(error)=>{
+        console.error(error);
+      }
+    })
+  }
+  countAllFavoiteEmail(isFavorite:boolean){
+    this.view.getAllFavoriteEmail(isFavorite).subscribe({
+      next:(data)=>{
+        this.countFavorite = data
+      },
+      error:(error)=> {
+        console.error(error);
+
+      }
+    })
+
+  }
+  onFavoriteClick(){}
+  //when favorite start click move the email to the favorite list 
 
 }
   
