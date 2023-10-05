@@ -26,6 +26,7 @@ export class AdminInboxComponent implements OnInit{
   pageSizeOptions = [5, 10, 25];
   pageEvent: PageEvent;
   isTrash:boolean = true;
+  isFavorite:boolean = true;
 
   constructor(private view:ViewBackendService, private deleteService:DeleteBackendService, private router:Router){}
 
@@ -153,7 +154,17 @@ export class AdminInboxComponent implements OnInit{
     })
 
   }
-  onFavoriteClick(){}
+  onFavoriteClick(id:number){
+    this.view.getCotactByFavoriteStatus(id, this.isFavorite).subscribe({
+      next:(data)=> {
+        this.ngOnInit();
+
+      },
+      error:(error)=> {
+        console.error(error);
+      }
+    })
+  }
   //when favorite start click move the email to the favorite list 
 
 }

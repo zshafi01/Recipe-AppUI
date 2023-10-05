@@ -8,22 +8,44 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <button type="button" class="btn btn-primary position-relative" [routerLink]="'/admin/inbox'">
-                Inbox
+        <div class="col-md-3">
+            <button type="button" class="btn btn-secondary position-relative" title="refresh" >
+                <i class="fa-solid fa-inbox"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                    {{countInbox}}
-                    <span class="visually-hidden">unread messages</span>
+                    {{countAll}}
+                    <span class="visually-hidden"></span>
                 </span>
             </button>
         </div>
-        <div class="col-md-6">
-            <button type="button" class="btn btn-secondary position-relative">
-                Trash
+        <div class="col-md-3">
+            <button type="button" class="btn btn-secondary position-relative" title="favorite" [routerLink]="'/admin/favorite' ">
+                <i class="fa-solid fa-star"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{countFavorite}}
+                    <span class="visually-hidden"></span>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary position-relative" [routerLink]="'/admin/inbox' ">
+                Inbox
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{countInbox}}
+                    <span class="visually-hidden"></span>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-secondary position-relative" [routerLink]="'/admin/trash'">
+             Trash
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                     {{countTrash}}
-                    <span class="visually-hidden">Trashed messages</span>
                 </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn position-relative" title="refresh" (click)="onRefresh()">
+                <i class="fa-solid fa-arrows-rotate"></i>
             </button>
         </div>
     </div>

@@ -19,6 +19,8 @@ export class AdminTrashComponent implements OnInit{
   keyword:string= "";
   countTrash:number=0;
   countInbox:number=0;
+  countAll:number =0;
+  countFavorite:number =0;
   isViewed:boolean= false;
   length = 5;
   pageSizeOptions = [5, 10, 25];
@@ -119,6 +121,9 @@ export class AdminTrashComponent implements OnInit{
     this.countTotalEmail();
 
 
+  }
+  onRefresh(){
+    this.ngOnInit();
   }
 
   handlePageEvent(event: any) {

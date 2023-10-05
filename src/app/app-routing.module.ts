@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminFavoriteComponent } from './Pages/admin-favorite/admin-favorite.component';
 import { Recipe } from './models/recipe';
 import { UnitOfMeasure } from './models/unit-of-measure';
 import { AboutUsComponent } from './Pages/about-us/about-us.component';
@@ -38,9 +39,8 @@ const routes: Routes = [
   {path:'admin/inbox', component:AdminInboxComponent},
   {path:'contact/detail/:id', component:ContactDetailsComponent},
   {path:'admin/trash', component:AdminTrashComponent},
+  {path:'admin/favorite', component:AdminFavoriteComponent}, 
   {path:'**',component:PagenotfoundComponent},
-  
-
 
 ];
 

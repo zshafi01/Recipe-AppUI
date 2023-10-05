@@ -18,7 +18,7 @@
             </button>
         </div>
         <div class="col-md-3">
-            <button type="button" class="btn btn-secondary position-relative" title="favorite">
+            <button type="button" class="btn btn-secondary position-relative" title="favorite" [routerLink]="'/admin/favorite' ">
                 <i class="fa-solid fa-star"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                     {{countFavorite}}
@@ -70,7 +70,7 @@
                     <div>
                         <a (click)="onViewClickHandler(contact.id)" class="btn"><i class="fa fa-eye" title="view"></i></a>
                         <a (click)="onDeleteStatus(contact.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash" title="delete"></i> </a>
-                        <a (click)="onFavoriteClick()" class="btn btn-block text-nowrap"><i class="fa-solid fa-star" title="favorite"></i></a>
+                        <a (click)="onFavoriteClick(contact.id)" class="btn btn-block text-nowrap"><i class="fa-solid fa-star" title="favorite" [ngStyle]="contact.isFavorite? {'color': 'orange'}:{'color': 'black'}"></i></a>
 
                                 
                     </div>

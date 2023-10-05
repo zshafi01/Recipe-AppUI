@@ -5,6 +5,7 @@ export class Contact {
     email!:string;
     phone!:string;
     isViewed!:boolean;
+    isFavorite!:boolean;
     message!:string;
     createdOn!:Date;
 

@@ -68,5 +68,11 @@ export class ViewBackendService   {
     public getAllFavoriteEmail(isFavorite:boolean):Observable<number>{
       return this.httpClient.get<number>(this.adminUrl+ '/favorite-email' +"?isFavorite=" + isFavorite)
     }
+    public getCotactByFavoriteStatus(id:number, isFavorite:boolean):Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl + '/favorite-status/' + id + "?isFavorite=" + isFavorite)
+    }
+    public getAllContactByisFavoriteStatusAndKeyword(isFavorite:boolean,keyword:string, pageNo:number, pageSize:number): Observable<any>{
+      return this.httpClient.get(this.adminUrl + '/favorite?isFavorite=' +isFavorite +"&keyword=" +keyword + "&page="+ pageNo + "&size=" + pageSize)
+    }
     
 }

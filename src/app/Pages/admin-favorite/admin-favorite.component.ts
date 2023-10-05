@@ -20,6 +20,8 @@ export class AdminFavoriteComponent implements OnInit{
   keyword:string= "";
   countTrash:number=0;
   countInbox:number=0;
+  countAll:number =0;
+  countFavorite:number =0;
   isViewed:boolean= false;
   length = 5;
   pageSizeOptions = [5, 10, 25];
@@ -29,18 +31,20 @@ export class AdminFavoriteComponent implements OnInit{
   constructor(private view:ViewBackendService, private deleteService:DeleteBackendService, private router:Router){}
 
   ngOnInit(): void {
-    this.getAllContactByDeleteStatusAndKeyword(this.isTrash,this.keyword,this.pageNumber, this.pageSize);
+    this.getAllContactByFavoriteStatusAndKeyword(true,this.keyword,this.pageNumber, this.pageSize);
     this.countTotalEmail();
-    this. countTotalTrashEmail();
+    this. countTotalTrashEmail();  
+    this.countAllEmail();
+    this.countAllFavoiteEmail(true);
   }
 
   onSearch(event:any){
     this.keyword=event.target.value;
-    this.getAllContactByDeleteStatusAndKeyword(this.isDeleted,this.keyword,this.pageNumber, this.pageSize);
+    this.getAllContactByFavoriteStatusAndKeyword(true,this.keyword,this.pageNumber, this.pageSize);
   }
 
-  getAllContactByDeleteStatusAndKeyword(isTrash:boolean,keyword:string, pageNumber:number, pageSize:number){
-    this.view.getAllContactByisDeleteStatusAndKeyword(isTrash,keyword,pageNumber,pageSize).subscribe({
+  getAllContactByFavoriteStatusAndKeyword(isFavorite:boolean,keyword:string, pageNumber:number, pageSize:number){
+    this.view.getAllContactByisFavoriteStatusAndKeyword(isFavorite,keyword,pageNumber,pageSize).subscribe({
       next:(data)=>{
         this.contacts= data['content'];
         this.length=data['totalElements'];
@@ -115,18 +119,54 @@ export class AdminFavoriteComponent implements OnInit{
            
     })
   }
+  countAllEmail(){
+    this.view.getCountAllEmail().subscribe({
+      next:(data)=>{
+        this.countAll = data;
+      },
+      error:(error)=>{
+        console.error(error);
+      }
+    })
+  }
+  countAllFavoiteEmail(isFavorite:boolean){
+    this.view.getAllFavoriteEmail(isFavorite).subscribe({
+      next:(data)=>{
+        this.countFavorite = data
+      },
+      error:(error)=> {
+        console.error(error);
 
-  // onMoveOutOfTrash(id:number){
-  //   this.onDeleteStatus(id);
-  //   this.countTotalEmail();
+      }
+    })
+
+  }
+  onFavoriteStatus(id:number){
+    this.view.getCotactByFavoriteStatus(id, this.isFavorite).subscribe({
+      next:(data)=> {
+        this.ngOnInit();
+
+      },
+      error:(error)=> {
+        console.error(error);
+      }
+    })
+  }
+
+  onUnfavorite(id:number){
+
+    this.onFavoriteStatus(id);
 
 
-  // }
+  }
+  onRefresh(){
+    this.ngOnInit();
+  }
 
   handlePageEvent(event: any) {
     this.pageNumber = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.getAllContactByDeleteStatusAndKeyword(this.isTrash,this.keyword,this.pageNumber, this.pageSize);
+    this.getAllContactByFavoriteStatusAndKeyword(this.isFavorite,this.keyword,this.pageNumber, this.pageSize);
   }
 
 }
