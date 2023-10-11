@@ -3,6 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Contact } from 'src/app/models/contact';
 import { DeleteBackendService } from 'src/app/services/delete-backend.service';
+import { UpdateBackendService } from 'src/app/services/update-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
@@ -15,7 +16,6 @@ export class AdminFavoriteComponent implements OnInit{
 
   pageNumber:number=0;
   pageSize:number=5;
-  isDeleted:boolean=false;
   deleteStatus:boolean = true;
   keyword:string= "";
   countTrash:number=0;
@@ -23,12 +23,13 @@ export class AdminFavoriteComponent implements OnInit{
   countAll:number =0;
   countFavorite:number =0;
   isViewed:boolean= false;
-  length = 5;
-  pageSizeOptions = [5, 10, 25];
   isTrash:boolean = true;
   isFavorite:boolean = false;
-
-  constructor(private view:ViewBackendService, private deleteService:DeleteBackendService, private router:Router){}
+  isDeleted:boolean=false;
+  length = 5;
+  pageSizeOptions = [5, 10, 25];
+  
+  constructor(private view:ViewBackendService, private deleteService:DeleteBackendService,private update:UpdateBackendService, private router:Router){}
 
   ngOnInit(): void {
     this.getAllContactByFavoriteStatusAndKeyword(true,this.keyword,this.pageNumber, this.pageSize);
@@ -110,7 +111,7 @@ export class AdminFavoriteComponent implements OnInit{
   }
 
   onViewStatusUpdate(id:number, isViewed:boolean){
-    this.view.getContactByViewStatus(id, isViewed).subscribe({
+    this.update.updateContactByViewStatus(id, isViewed).subscribe({
       next:(data)=>{
       },
      error:(error)=>{
@@ -142,7 +143,7 @@ export class AdminFavoriteComponent implements OnInit{
 
   }
   onFavoriteStatus(id:number){
-    this.view.getCotactByFavoriteStatus(id, this.isFavorite).subscribe({
+    this.update.updateFavoriteStatus(id, this.isFavorite).subscribe({
       next:(data)=> {
         this.ngOnInit();
 

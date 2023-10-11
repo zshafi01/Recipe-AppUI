@@ -6,6 +6,7 @@ import { Category } from '../models/category';
 import { Contact } from '../models/contact';
 import { Newsletter } from '../models/newsletter';
 import { Recipe } from '../models/recipe';
+import { Reply } from '../models/reply';
 import { UnitOfMeasure } from '../models/unit-of-measure';
 import { ContactUsComponent } from '../Pages/contact-us/contact-us.component';
 
@@ -42,5 +43,8 @@ export class RegistrationBackendService {
     }
     public sendEmailToUs(contact: Contact):Observable<Object>{
       return this.httpClient.post(this.publicUrl + '/sendemail', contact)
+    }
+    public replyEmail(reply:Reply):Observable<Object>{
+      return this.httpClient.post(this.adminUrl + '/reply',  reply)
     }
 }

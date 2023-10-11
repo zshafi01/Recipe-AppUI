@@ -3,6 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Contact } from 'src/app/models/contact';
 import { DeleteBackendService } from 'src/app/services/delete-backend.service';
+import { UpdateBackendService } from 'src/app/services/update-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class AdminInboxComponent implements OnInit{
   isTrash:boolean = true;
   isFavorite:boolean = true;
 
-  constructor(private view:ViewBackendService, private deleteService:DeleteBackendService, private router:Router){}
+  constructor(private view:ViewBackendService, private deleteService:DeleteBackendService, private update:UpdateBackendService, private router:Router){}
 
   ngOnInit(): void {
     // this.getAllContactByDeleteStatus(this.isDeleted, this.pageNumber, this.pageSize);
@@ -109,7 +110,7 @@ export class AdminInboxComponent implements OnInit{
   }
 
   onViewStatusUpdate(id:number, isViewed:boolean){
-    this.view.getContactByViewStatus(id, isViewed).subscribe({
+    this.update.updateContactByViewStatus(id, isViewed).subscribe({
       next:(data)=>{
       },
      error:(error)=>{
@@ -155,7 +156,7 @@ export class AdminInboxComponent implements OnInit{
 
   }
   onFavoriteClick(id:number){
-    this.view.getCotactByFavoriteStatus(id, this.isFavorite).subscribe({
+    this.update.updateFavoriteStatus(id, this.isFavorite).subscribe({
       next:(data)=> {
         this.ngOnInit();
 

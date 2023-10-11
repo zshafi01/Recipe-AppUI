@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from 'src/app/models/contact';
 import { DeleteBackendService } from 'src/app/services/delete-backend.service';
+import { UpdateBackendService } from 'src/app/services/update-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class AdminTrashComponent implements OnInit{
   pageSizeOptions = [5, 10, 25];
   isTrash:boolean = true;
 
-  constructor(private view:ViewBackendService, private deleteService:DeleteBackendService, private router:Router){}
+  constructor(private view:ViewBackendService, private deleteService:DeleteBackendService,private update:UpdateBackendService, private router:Router){}
 
   ngOnInit(): void {
     this.getAllContactByDeleteStatusAndKeyword(this.isTrash,this.keyword,this.pageNumber, this.pageSize);
@@ -106,7 +107,7 @@ export class AdminTrashComponent implements OnInit{
   }
 
   onViewStatusUpdate(id:number, isViewed:boolean){
-    this.view.getContactByViewStatus(id, isViewed).subscribe({
+    this.update.updateContactByViewStatus(id, isViewed).subscribe({
       next:(data)=>{
       },
      error:(error)=>{

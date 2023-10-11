@@ -9,11 +9,11 @@ import { UpdateBackendService } from 'src/app/services/update-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
-  selector: 'app-contact-details',
-  templateUrl: './contact-details.component.html',
-  styleUrls: ['./contact-details.component.css']
+  selector: 'app-admin-compose-email',
+  templateUrl: './admin-compose-email.component.html',
+  styleUrls: ['./admin-compose-email.component.css']
 })
-export class ContactDetailsComponent {
+export class AdminComposeEmailComponent {
   id!:number;
   display:string ="none";
   alertDisply:string ="none";
@@ -157,3 +157,5 @@ export class ContactDetailsComponent {
   }
 
 }
+
+

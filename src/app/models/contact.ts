@@ -6,6 +6,7 @@ export class Contact {
     phone!:string;
     isViewed!:boolean;
     isFavorite!:boolean;
+    isDeleted!:boolean;
     message!:string;
     createdOn!:Date;
 

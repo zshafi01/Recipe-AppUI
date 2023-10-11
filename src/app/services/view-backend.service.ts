@@ -59,18 +59,14 @@ export class ViewBackendService   {
     public getCountTotalEmail(isDeleted:boolean, isViewed:boolean):Observable<number>{
       return this.httpClient.get<number>(this.adminUrl + '/count-email?isDeleted=' +isDeleted +"&isViewed=" +isViewed)
     }
-    public getContactByViewStatus(id:number, isViewed:boolean):Observable<number>{
-      return this.httpClient.get<number>(this.adminUrl + '/view/' + id +"?isViewed=" +isViewed)
-    }
+    
     public getCountAllEmail():Observable<number>{
       return this.httpClient.get<number>(this.adminUrl + '/count-all-email')
     }
     public getAllFavoriteEmail(isFavorite:boolean):Observable<number>{
       return this.httpClient.get<number>(this.adminUrl+ '/favorite-email' +"?isFavorite=" + isFavorite)
     }
-    public getCotactByFavoriteStatus(id:number, isFavorite:boolean):Observable<number>{
-      return this.httpClient.get<number>(this.adminUrl + '/favorite-status/' + id + "?isFavorite=" + isFavorite)
-    }
+   
     public getAllContactByisFavoriteStatusAndKeyword(isFavorite:boolean,keyword:string, pageNo:number, pageSize:number): Observable<any>{
       return this.httpClient.get(this.adminUrl + '/favorite?isFavorite=' +isFavorite +"&keyword=" +keyword + "&page="+ pageNo + "&size=" + pageSize)
     }

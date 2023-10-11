@@ -20,6 +20,7 @@ import { RecipiedetailesComponent } from './Pages/recipiedetailes/recipiedetaile
 import { UnitOfMeasuresComponent } from './Pages/unit-of-measures/unit-of-measures.component';
 import { UpdateRecipeComponent } from './Pages/update-recipe/update-recipe.component';
 import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/update-unit-of-measure.component';
+import { AdminComposeEmailComponent } from './Pages/admin-compose-email/admin-compose-email.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path:'contact/detail/:id', component:ContactDetailsComponent},
   {path:'admin/trash', component:AdminTrashComponent},
   {path:'admin/favorite', component:AdminFavoriteComponent}, 
+  {path:'admin/compose-email',component:AdminComposeEmailComponent},
   {path:'**',component:PagenotfoundComponent},
 
 ];

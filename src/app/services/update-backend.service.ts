@@ -34,5 +34,11 @@ export class UpdateBackendService {
     public updateIngredient(ingredient:Ingredient):Observable<Object>{
       return this.httpClient.post(this.userUrl + '/ingredient', ingredient);
     }
+    public updateContactByViewStatus(id:number, isViewed:boolean):Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl + '/view/' + id +"?isViewed=" +isViewed)
+    }
+    public updateFavoriteStatus(id:number, isFavorite:boolean):Observable<number>{
+      return this.httpClient.get<number>(this.adminUrl + '/favorite-status/' + id + "?isFavorite=" + isFavorite)
+    }
  
 }
