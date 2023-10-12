@@ -143,17 +143,21 @@ export class ContactDetailsComponent {
            
     })
   }
-  onDeleteStatus(id: number){
-    this.deleteService.updateDeleteStatus(id, this.deleteStatus).subscribe({
+  onDeleteStatus(id: number, isDeleted:boolean){
+    this.deleteService.updateDeleteStatus(id, isDeleted).subscribe({
       next:(data)=>{
-      this.isRead(id, false);
+      // this.isRead(id, false);
       this.ngOnInit();
-      // window.location.reload(); to refresh the page
+      // window.location.reload(); //to refresh the page
       },
       error:(error)=>{
         console.error(error);
       }    
     })
+  }
+  onTrashclick(id:number, isDeleted:boolean){
+    this.onDeleteStatus(id, isDeleted);
+    
   }
 
 }

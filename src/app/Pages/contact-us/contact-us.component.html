@@ -44,12 +44,12 @@
                     data-validate="Please Type Your Message">
                     <span class="label-input100">Message</span>
                     <textarea class="input100" name="message" #message="ngModel" [(ngModel)]="contact.message" rows="3"
-                        maxlength="255" required placeholder="Your message here..."></textarea>
-                    <mat-error *ngIf="message.value?.length == 255" class="text-danger"> only 255 charactors
+                        maxlength="1000" required placeholder="Your message here..."></textarea>
+                    <mat-error *ngIf="message.value?.length == 1000" class="text-danger"> only 1000 charactors
                         allowed!</mat-error>
                     <mat-error *ngIf="message.touched && message.hasError('required')" class="text-danger">Message is
                         requeried</mat-error>
-                    <mat-hint>{{message.value?.length || 0}}/255</mat-hint>
+                    <mat-hint>{{message.value?.length || 0}}/1000</mat-hint>
                 </div>
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">

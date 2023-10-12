@@ -143,6 +143,11 @@ export class AdminComposeEmailComponent {
            
     })
   }
+  onDiscard(){
+    debugger
+    this.router.navigate(['/admin/inbox']);
+
+  }
   onDeleteStatus(id: number){
     this.deleteService.updateDeleteStatus(id, this.deleteStatus).subscribe({
       next:(data)=>{
