@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category';
+import { ComposeEmail } from '../models/compose-email';
 import { Contact } from '../models/contact';
 import { Newsletter } from '../models/newsletter';
 import { Recipe } from '../models/recipe';
@@ -46,5 +47,8 @@ export class RegistrationBackendService {
     }
     public replyEmail(reply:Reply):Observable<Object>{
       return this.httpClient.post(this.adminUrl + '/reply',  reply)
+    }
+    public composeEmail(compose:ComposeEmail):Observable<Object>{
+      return this.httpClient.post(this.adminUrl + '/compose-email', compose)
     }
 }

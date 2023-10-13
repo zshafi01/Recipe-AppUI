@@ -1,6 +1,7 @@
 import { NONE_TYPE } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComposeEmail } from 'src/app/models/compose-email';
 import { Contact } from 'src/app/models/contact';
 import { Reply } from 'src/app/models/reply';
 import { DeleteBackendService } from 'src/app/services/delete-backend.service';
@@ -29,6 +30,7 @@ export class AdminComposeEmailComponent {
   isDeleted:boolean=false;
   deleteStatus:boolean = true;
   currentDate:Date =new Date();
+  compose:ComposeEmail = new ComposeEmail();
 
 
   constructor (private view:ViewBackendService, private add:RegistrationBackendService, private deleteService:DeleteBackendService, private update:UpdateBackendService, private route:ActivatedRoute, private router:Router){}
@@ -147,6 +149,18 @@ export class AdminComposeEmailComponent {
     debugger
     this.router.navigate(['/admin/inbox']);
 
+  }
+  onSend(){
+    this.add.composeEmail(this.compose).subscribe({
+      next: (data)=>{
+        this.router.navigate(['/admin/inbox']);
+      },
+      error:(error)=>{
+        console.error(error);
+       }
+             
+      })
+    
   }
   onDeleteStatus(id: number){
     this.deleteService.updateDeleteStatus(id, this.deleteStatus).subscribe({
