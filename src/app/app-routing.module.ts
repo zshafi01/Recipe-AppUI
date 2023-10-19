@@ -21,6 +21,7 @@ import { UnitOfMeasuresComponent } from './Pages/unit-of-measures/unit-of-measur
 import { UpdateRecipeComponent } from './Pages/update-recipe/update-recipe.component';
 import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/update-unit-of-measure.component';
 import { AdminComposeEmailComponent } from './Pages/admin-compose-email/admin-compose-email.component';
+import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-emails.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:'aboutus', component:AboutUsComponent},
   {path:'contactus', component:ContactUsComponent},
   {path:'admin/inbox', component:AdminInboxComponent},
+  {path:'admin/sent-emails', component:AdminSentEmailsComponent},
   {path:'contact/detail/:id', component:ContactDetailsComponent},
   {path:'admin/trash', component:AdminTrashComponent},
   {path:'admin/favorite', component:AdminFavoriteComponent}, 

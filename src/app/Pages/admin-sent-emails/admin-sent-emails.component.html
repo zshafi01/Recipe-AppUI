@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="col-6 mx-auto my-5">
+      <form class="d-flex" role="search">       
+       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (input)="onSearch($event)">           
+      </form>
+    </div>
+    
+    <table class="table my-5">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Email To</th>
+          <th scope="col">Message</th>
+          <th scope="col">CreatedOn</th>
+          <th scope="col">Action</th>
+        
+        </tr>
+      </thead>
+      <tbody *ngIf="sentEmails && sentEmails.length>0">
+        <tr *ngFor="let sentEmail of sentEmails">
+          <td>{{sentEmail.id}}</td>
+          <td>{{sentEmail.emailTo}}</td>
+          <td>{{sentEmail.message.length > 25?(sentEmail.message | slice: 0:25) + '...' :(sentEmail.message)}}
+          </td>
+          <td>{{sentEmail.createdOn|date}}</td>
+          <td>
+            <div>
+              <a><i class="fa fa-eye"></i> View </a>
+              <a><i class="fa fa-trash"></i> Delete </a>
+            </div>
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+    <div class="container my-5" *ngIf="sentEmails.length == 0 || sentEmails == null">
+      <h1 class="text-center">No Content</h1>
+    </div>
+  </div>

@@ -153,7 +153,7 @@ export class AdminComposeEmailComponent {
   onSend(){
     this.add.composeEmail(this.compose).subscribe({
       next: (data)=>{
-        this.router.navigate(['/admin/inbox']);
+        this.router.navigate(['/admin/sent-emails']);
       },
       error:(error)=>{
         console.error(error);
