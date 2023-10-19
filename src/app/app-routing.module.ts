@@ -24,7 +24,6 @@ import { AdminComposeEmailComponent } from './Pages/admin-compose-email/admin-co
 import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-emails.component';
 
 const routes: Routes = [
-  {path:'home',component:HomeComponent},
   {path:'', redirectTo:'home',pathMatch:'full'}, 
   {path:'add-recipe', component:AddRecipeComponent},
   {path:'add-category', component:AdminAddCategoryComponent},
@@ -44,6 +43,7 @@ const routes: Routes = [
   {path:'admin/trash', component:AdminTrashComponent},
   {path:'admin/favorite', component:AdminFavoriteComponent}, 
   {path:'admin/compose-email',component:AdminComposeEmailComponent},
+  {path:'home',component:HomeComponent},
   {path:'**',component:PagenotfoundComponent},
 
 ];
