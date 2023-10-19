@@ -5,41 +5,78 @@
                 <div class="col-6 col-md-2 mb-3">
                     <h5><img src="../../../assets/img/MicrosoftTeams-image.png" width="200"></h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Lorem ipsum dolor
+                                sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
                             </a></li>
-                </ul>
+                    </ul>
                 </div>
 
                 <div class="col-6 col-md-2 mb-3">
                     <h5>Quick Links</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a routerLink="/home" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a routerLink="/aboutus" class="nav-link p-0 text-body-secondary">About</a></li>
+                        <li class="nav-item mb-2"><a routerLink="/contactus" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
                     </ul>
                 </div>
-
                 <div class="col-6 col-md-2 mb-3">
                     <h5>Contact Info</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="tel:0911121314" class="nav-link p-0 text-body-secondary"><i class="fa fa-phone"></i> 0911121314</a></li>
-                        <li class="nav-item mb-2"><a href="mailto:info@recipe.com" class="nav-link p-0 text-body-secondary"><i class="fa fa-envelope"></i>info@recipe.com</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa fa-map-marker"></i>Addis Ababa, Ethiopia</a></li>
-                      
+                        <li class="nav-item mb-2"><a href="tel:0911121314" class="nav-link p-0 text-body-secondary"><i
+                                    class="fa fa-phone"></i> 0911121314</a></li>
+                        <li class="nav-item mb-2"><a href="mailto:info@recipe.com"
+                                class="nav-link p-0 text-body-secondary"><i
+                                    class="fa fa-envelope"></i>info@recipe.com</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i
+                                    class="fa fa-map-marker"></i>Addis Ababa, Ethiopia</a></li>
+
                     </ul>
                 </div>
 
                 <div class="col-md-5 offset-md-1 mb-3">
-                    <form>
+                    <form class="form" #subscribtionForm="ngForm" (ngSubmit)="onSubliscibtion()">
                         <h5>Subscribe to our newsletter</h5>
                         <p>Monthly digest of what's new and exciting from us.</p>
+
                         <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                            <label for="newsletter1" class="visually-hidden">Email address</label>
-                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                            <button class="btn btn-primary" type="button">Subscribe</button>
+                            <label for="email" class="visually-hidden">Email address</label>
+                            <input id="email" type="text" class="form-control" placeholder="Email address"
+                                name="email" #email="ngModel" [(ngModel)]="newsletter.email" required>
+                            <mat-error *ngIf="email.touched && email.hasError('required')" class="text-danger">Email is
+                                requeried</mat-error>
+
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
                         </div>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-5">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Category</mat-label>
+                                <mat-select [(ngModel)]="newsletter.categoryName" name="categoryName">
+                                    <!-- multiple-->
+                                    <!-- <mat-select-trigger>
+                                    {{toppings.value?.[0] || ''}}
+                                    <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                                      (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                                    </span>
+                                  </mat-select-trigger> -->
+                                    <mat-option value="" selected>Select Category</mat-option>
+                                    <mat-option *ngFor="let category of categories" [value]="category.name">
+                                        {{category.name}}</mat-option>
+
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="successAlert">
+                            <strong>Success!</strong> You are registor with {{newsletter.email}} successfully!.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                        </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="dangerAlert">
+                            <strong>Failed!</strong> Email address is already exsist or something went wrong!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                        </div>
+
                     </form>
                 </div>
             </div>

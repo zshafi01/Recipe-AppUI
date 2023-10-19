@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="col-6 mx-auto mb-3">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2 my-5" type="search" placeholder="Search" aria-label="Search"
+                (input)="onSearch($event)">
+            <!-- <button class="btn btn-outline-success" type="submit" (click)="onSearch($)">Search</button> -->
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <button type="button" class="btn btn-secondary position-relative" title="refresh">
+                <i class="fa-solid fa-inbox"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{countAll}}
+                    <span class="visually-hidden"></span>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-secondary position-relative" title="favorite" [routerLink]="'/admin/favorite' ">
+                <i class="fa-solid fa-star"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{countFavorite}}
+                    <span class="visually-hidden"></span>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary position-relative">
+                Inbox
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{countInbox}}
+                    <span class="visually-hidden"></span>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-secondary position-relative" [routerLink]="'/admin/trash'">
+             Trash
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{countTrash}}
+                </span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn position-relative" title="refresh" (click)="onRefresh()">
+                <i class="fa-solid fa-arrows-rotate"></i>
+            </button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Subject</th>
+                <th scope="col">Message</th>
+                <th scope="col">Created-On</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts">
+
+                <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">{{contact.subject}}</td>
+                <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}" (click)="onClickView(contact.id)" style="cursor:pointer;">
+                    {{contact.message.length>60?(contact.message|slice:0:60) + '...' :(contact.message)}}</td>
+                <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">{{contact.createdOn|date}}</td>
+
+                <td>
+                    <div>
+                        <a (click)="onViewClickHandler(contact.id)" class="btn"><i class="fa fa-eye" title="view"></i></a>
+                        <a (click)="onDeleteStatus(contact.id)" class="btn btn-block text-nowrap"><i class="fa fa-trash" title="delete"></i> </a>
+                        <a (click)="onFavoriteClick(contact.id)" class="btn btn-block text-nowrap"><i class="fa-solid fa-star" title="favorite" [ngStyle]="contact.isFavorite? {'color': 'orange'}:{'color': 'black'}"></i></a>
+
+                                
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="contacts!= null && contacts.length> 0" class="my-5">
+        <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions">
+        </mat-paginator>
+    </div>
+    <div *ngIf="contacts== null || contacts.length == 0" class="my-5">
+        <h1 class="text-center">No Message</h1>
+
+    </div>
+</div>

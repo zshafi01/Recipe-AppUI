@@ -1,0 +1,75 @@
+<div [ngStyle]="{'display':showContactForm}">
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form" (ngSubmit)="onSubmit()">
+                <span class="contact100-form-title">
+                    Contact Us
+                </span>
+                <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+                    <span class="label-input100">FULL NAME *</span>
+                    <input class="input100" type="text" name="name" #fullname="ngModel" [(ngModel)]="contact.fullName"
+                        required placeholder="Enter Your Name">
+                    <mat-error *ngIf="fullname.touched && fullname.hasError('required')" class="text-danger">This field
+                        is requred!</mat-error>
+
+                </div>
+                <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your subject">
+                    <span class="label-input100">SUBJECT *</span>
+                    <input class="input100" type="text" name="subject" #subjects="ngModel" [(ngModel)]="contact.subject"
+                        required placeholder="Enter Your Subject">
+                    <mat-error *ngIf="subjects.touched && subjects.hasError('required')" class="text-danger">This field
+                        is requred!</mat-error>
+
+                </div>
+                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
+                    data-validate="Enter Your Email (e@a.x)">
+                    <span class="label-input100">Email *</span>
+                    <input class="input100" type="text" name="email" #email="ngModel" [(ngModel)]="contact.email"
+                        required placeholder="Enter Your Email">
+                    <mat-error *ngIf="email.touched && email.hasError('required')" class="text-danger">This field is
+                        requred!</mat-error>
+
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Phone</span>
+                    <input class="input100" type="text" name="phone" #phone="ngModel" [(ngModel)]="contact.phone"
+                        required placeholder="Enter Number Phone">
+                    <mat-error *ngIf="phone.touched && phone.hasError('required')" class="text-danger">This field is
+                        requred!</mat-error>
+
+                </div>
+
+                <div class="wrap-input100 validate-input bg0 rs1-alert-validate"
+                    data-validate="Please Type Your Message">
+                    <span class="label-input100">Message</span>
+                    <textarea class="input100" name="message" #message="ngModel" [(ngModel)]="contact.message" rows="3"
+                        maxlength="1000" required placeholder="Your message here..."></textarea>
+                    <mat-error *ngIf="message.value?.length == 1000" class="text-danger"> only 1000 charactors
+                        allowed!</mat-error>
+                    <mat-error *ngIf="message.touched && message.hasError('required')" class="text-danger">Message is
+                        requeried</mat-error>
+                    <mat-hint>{{message.value?.length || 0}}/1000</mat-hint>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn">
+                        <span>
+                            Submit
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-cont" [ngStyle]="{'display':showAlert}">
+    <div class="alert alert-success" role="alert">
+        Message sent successfully!
+    </div>
+</div>
+<div class="container-cont" [ngStyle]="{'display':showDangarAlert}">
+    <div class="alert alert-danger" role="alert">
+        Something went wrong!
+    </div>
+</div>

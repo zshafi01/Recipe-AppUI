@@ -7,8 +7,9 @@ export class Recipe {
     prepTime!:string;
     cookTime!:string;
     source!:string;
-    tumbnail!:string;
+    thumbnail!:string;
     difficulty!:string;
-    ingredientSet!: Ingredient[];
+    ingredientSet: Ingredient[]= [];
     category!:number;
+    
 }

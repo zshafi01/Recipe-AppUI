@@ -1,3 +1,14 @@
 #footer-section{
     background-color: #F8F9FC;
 }
+.btn-primary{
+    background-color: #FE6338;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: black;
+}
+
+a:hover{
+   color: #FE6338 !important;
+}
