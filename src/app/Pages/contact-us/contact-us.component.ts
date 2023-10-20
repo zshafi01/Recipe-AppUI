@@ -6,7 +6,7 @@ import { RegistrationBackendService } from 'src/app/services/registration-backen
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.css']
+  styleUrls: ['./contact-us.component.css','./contact-us2.component.css', './contact-us3.component.css','./btn.component.css','./input.component.css']
 })
 export class ContactUsComponent implements OnInit {
   contact:Contact= new Contact();

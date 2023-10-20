@@ -11,7 +11,7 @@ import { ViewBackendService } from 'src/app/services/view-backend.service';
 @Component({
   selector: 'app-contact-details',
   templateUrl: './contact-details.component.html',
-  styleUrls: ['./contact-details.component.css']
+  styleUrls: ['./contact-details.component.css','./contact-details-btn.component.css','./contact-details-input.component.css','./contact-details-inbox.component.css']
 })
 export class ContactDetailsComponent {
   id!:number;
