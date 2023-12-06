@@ -1,0 +1,190 @@
+.badge{
+    background-color: #FE6338;
+    border: none;
+}
+.inbox-wrapper .email-content .email-inbox-header .email-title .new-messages {
+    font-size: .875rem;
+    color: #686868;
+    margin-left: 3px;
+    }
+    
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .btn,
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .fc .fc-button,
+    .fc .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .fc-button,
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .swal2-modal .swal2-actions button,
+    .swal2-modal .swal2-actions .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn button,
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .wizard > .actions a,
+    .wizard > .actions .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn a {
+    border-radius: 0;
+    padding: 4.5px 10px;
+    }
+    
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .btn svg,
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .fc .fc-button svg,
+    .fc .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .fc-button svg,
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .swal2-modal .swal2-actions button svg,
+    .swal2-modal .swal2-actions .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn button svg,
+    .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn .wizard > .actions a svg,
+    .wizard > .actions .inbox-wrapper .email-content .email-inbox-header .input-search .input-group-btn a svg {
+    width: 18px;
+    }
+    
+    .inbox-wrapper .email-content .email-filters {
+    padding: 20px;
+    border-bottom: 1px solid #e8ebf1;
+    background-color: transparent;
+    width: 100%;
+    border-top: 1px solid #e8ebf1;
+    }
+    
+    .inbox-wrapper .email-content .email-filters > div {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    }
+    
+    .inbox-wrapper .email-content .email-filters .email-filters-left .btn-group,
+    .inbox-wrapper .email-content .email-filters .email-filters-left .fc .fc-toolbar.fc-header-toolbar .fc-left .fc-button-group,
+    .fc .fc-toolbar.fc-header-toolbar .fc-left .inbox-wrapper .email-content .email-filters .email-filters-left .fc-button-group,
+    .inbox-wrapper .email-content .email-filters .email-filters-left .fc .fc-toolbar.fc-header-toolbar .fc-right .fc-button-group,
+    .fc .fc-toolbar.fc-header-toolbar .fc-right .inbox-wrapper .email-content .email-filters .email-filters-left .fc-button-group {
+    margin-right: 5px;
+    }
+    
+    .inbox-wrapper .email-content .email-filters .email-filters-left input {
+    margin-right: 8px;
+    }
+    
+    .inbox-wrapper .email-content .email-filters .email-filters-right {
+    text-align: right;
+    }
+    
+    @media (max-width: 767px) {
+    .inbox-wrapper .email-content .email-filters .email-filters-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    }
+    
+    .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-indicator {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 13px;
+    }
+    
+    .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav .btn svg,
+    .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav .fc .fc-button svg,
+    .fc .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav .fc-button svg,
+    .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav .swal2-modal .swal2-actions button svg,
+    .swal2-modal .swal2-actions .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav button svg,
+    .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav .wizard > .actions a svg,
+    .wizard > .actions .inbox-wrapper .email-content .email-filters .email-filters-right .email-pagination-nav a svg {
+    width: 18px;
+    }
+    .inbox-wrapper .email-content .email-filters .be-select-all.custom-checkbox {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0;
+        margin: 0 30px 0 0;
+        }
+        
+        .inbox-wrapper .email-content .email-list .email-list-item {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        border-bottom: 1px solid #e8ebf1;
+        padding: 10px 20px;
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+        }
+        .email-attachments ul > li span {
+            font-weight: 400;
+            }
+            
+            .rtl .email-head-subject .title a .icon {
+            margin-right: 0;
+            margin-left: 6px;
+            }
+            
+            .rtl .email-head-subject .icons .icon {
+            margin-left: 0;
+            margin-right: 12px;
+            }
+            
+            .rtl .email-head-sender .avatar {
+            margin-right: 0;
+            margin-left: 10px;
+            }
+            
+            .rtl .email-head-sender .sender .actions .icon {
+            margin-left: 0;
+            margin-right: 7px;
+            }
+            
+            .email-head-title {
+            padding: 15px;
+            border-bottom: 1px solid #e8ebf1;
+            font-weight: 400;
+            color: #3d405c;
+            font-size: .99rem;
+            }
+            
+            .email-head-title .icon {
+            color: #696969;
+            margin-right: 12px;
+            vertical-align: middle;
+            line-height: 31px;
+            position: relative;
+            top: -1px;
+            float: left;
+            font-size: 1.538rem;
+            }
+            
+            .email-compose-fields {
+            background-color: transparent;
+            padding: 20px 15px;
+            }
+            
+            .email-compose-fields .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+            margin: -2px -14px;
+            }
+            
+            .email-compose-fields .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+            border-radius: 0;
+            background: #727cf5;
+            color: #ffffff;
+            margin-top: 0px;
+            padding: 4px 10px;
+            font-size: 13px;
+            border: 0;
+            }
+            
+            .email-compose-fields .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice span {
+            color: #ffffff;
+            }
+            
+            .email-compose-fields .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-search {
+            line-height: 15px;
+            }
+            
+            .form-group.row {
+            margin-bottom: 0;
+            padding: 12px 0;
+            }
+            
+            .form-group.row label {
+            white-space: nowrap;
+            }
+            
+            .email-compose-fields label {
+            padding-top: 6px;
+            }
+            
+           

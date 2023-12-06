@@ -15,9 +15,18 @@
             </div>
         </div>
     </div>
-    <div>
+    <!-- <div>
         <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
             [pageSizeOptions]="pageSizeOptions">
         </mat-paginator>
+    </div> -->
+    <div *ngIf="recipes!= null && recipes.length> 0" class="my-5">
+        <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions">
+        </mat-paginator>
+    </div>
+    <div *ngIf="recipes== null || recipes.length == 0" class="my-5">
+        <h1 class="text-center">No Recipes Added</h1>
+
     </div>
 </div>

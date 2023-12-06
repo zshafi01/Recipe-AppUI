@@ -10,6 +10,7 @@ import { Recipe } from '../models/recipe';
 import { Reply } from '../models/reply';
 import { UnitOfMeasure } from '../models/unit-of-measure';
 import { ContactUsComponent } from '../Pages/contact-us/contact-us.component';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +51,8 @@ export class RegistrationBackendService {
     }
     public composeEmail(compose:ComposeEmail):Observable<Object>{
       return this.httpClient.post(this.adminUrl + '/compose-email', compose)
+    }
+    public registorUser(user:User):Observable<Object>{
+      return this.httpClient.post(this.publicUrl + '/user', user);
     }
 }

@@ -1,0 +1,209 @@
+.badge{
+    background-color: #FE6338;
+    border: none;
+ 
+
+}
+a{
+    text-decoration: none;
+}
+@media (min-width: 992px) {
+.inbox-wrapper .email-aside .aside-content {
+    padding-right: 10px;
+}
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-header {
+padding: 0 0 5px;
+position: relative;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-header .title {
+display: block;
+margin: 3px 0 0;
+font-size: 1.1rem;
+line-height: 27px;
+color: #686868;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-header .navbar-toggle {
+background: 0 0;
+display: none;
+outline: 0;
+border: 0;
+padding: 0 11px 0 0;
+text-align: right;
+margin: 0;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+position: absolute;
+}
+
+@media (max-width: 991px) {
+.inbox-wrapper .email-aside .aside-content .aside-header .navbar-toggle {
+    display: block;
+}
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-header .navbar-toggle .icon {
+font-size: 24px;
+color: #71738d;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-compose {
+text-align: center;
+padding: 14px 0;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-compose .btn,
+.inbox-wrapper .email-aside .aside-content .aside-compose .fc .fc-button,
+.fc .inbox-wrapper .email-aside .aside-content .aside-compose .fc-button,
+.inbox-wrapper .email-aside .aside-content .aside-compose .swal2-modal .swal2-actions button,
+.swal2-modal .swal2-actions .inbox-wrapper .email-aside .aside-content .aside-compose button,
+.inbox-wrapper .email-aside .aside-content .aside-compose .wizard > .actions a,
+.wizard > .actions .inbox-wrapper .email-aside .aside-content .aside-compose a {
+padding: 11px;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav {
+visibility: visible;
+padding: 0 0;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav.collapse {
+display: block;
+}
+
+@media (max-width: 991px) {
+.inbox-wrapper .email-aside .aside-content .aside-nav.collapse {
+    display: none;
+}
+}
+
+@media (max-width: 991px) {
+.inbox-wrapper .email-aside .aside-content .aside-nav.show {
+    display: block;
+}
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .title {
+display: block;
+color: #3d405c;
+font-size: 12px;
+font-weight: 700;
+text-transform: uppercase;
+margin: 20px 0 0;
+padding: 8px 14px 4px;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li {
+width: 100%;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li a {
+display: -webkit-flex;
+display: flex;
+-webkit-align-items: center;
+align-items: center;
+position: relative;
+color: #71748d;
+padding: 7px 14px;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li a:hover {
+text-decoration: none;
+background-color: rgba(114, 124, 245, 0.1);
+color: #727cf5;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li a .icon svg {
+width: 18px;
+margin-right: 10px;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li a .badge {
+margin-left: auto;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li a svg {
+width: 18px;
+margin-right: 10px;
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li.active a {
+color: #FE6338;
+background: rgba(255, 51, 102, 0.1);
+}
+
+.inbox-wrapper .email-aside .aside-content .aside-nav .nav li.active a .icon {
+color: #FE6338;
+}
+
+.inbox-wrapper .email-content .email-inbox-header {
+background-color: transparent;
+padding: 18px 18px;
+}
+
+.inbox-wrapper .email-content .email-inbox-header .email-title {
+display: -webkit-flex;
+display: flex;
+-webkit-align-items: center;
+align-items: center;
+font-size: 1rem;
+}
+
+.inbox-wrapper .email-content .email-inbox-header .email-title svg {
+width: 20px;
+margin-right: 10px;
+color: #686868;
+}
+.email.editor {
+    background-color: transparent;
+    }
+    
+    .email.editor .editor-statusbar {
+    display: none;
+    }
+    
+    .email.action-send {
+    padding: 8px 0px 0;
+    }
+    
+    .btn-space {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    }
+    
+    .breadcrumb {
+    margin: 0;
+    background-color: transparent;
+    }
+    
+    .rtl .email-compose-fields .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    float: right;
+    }
+    
+    .rtl .btn-space {
+    margin-right: 0;
+    margin-left: 5px;
+    }
+    .card {
+    box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    -webkit-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    -moz-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    -ms-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    }
+    .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #f2f4f9;
+    border-radius: 0.25rem;
+    }
+

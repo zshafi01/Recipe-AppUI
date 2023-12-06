@@ -81,59 +81,98 @@
                             </div>
                         </div>
                         <div class="col-lg-9 email-content">
-
-
-                            <table class="table table-hover my-5">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Subject</th>
-                                        <th scope="col">Message</th>
-                                        <th scope="col">Created-On</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let contact of contacts">
-                                        <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">
-                                            {{contact.subject}}</td>
-                                        <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">
-                                            {{contact.message.length>60?(contact.message|slice:0:60) + '...'
-                                            :(contact.message)}}</td>
-                                        <td [ngStyle]="contact.isViewed? {'color': 'green'}:{'color': 'blue'}">
-                                            {{contact.createdOn|date}}</td>
-                                        <td>
-                                            <div>
-                                                <a (click)="onViewClickHandler(contact.id)"
-                                                    class="btn btn-block text-nowrap"><i class="fa fa-eye"></i>
-                                                    View
-                                                </a>
-
-                                                <a (click)="onDelete(contact.id)" class="btn btn-block text-nowrap"><i
-                                                        class="fa fa-trash"></i>
-                                                    Delete </a>
-                                                <a (click)="onUnfavorite(contact.id)"
-                                                    class="btn btn-block text-nowrap"><i class="fa-regular fa-star"></i>
-                                                    Unfavorite </a>
-
+                            <main>
+                                <p class="text-center">New Message</p>
+                                <form #composeEmailForm="ngForm" > 
+                                    <div class="form-row mb-3">
+                                        <label for="to" class="col-2 col-sm-1 col-form-label">To: </label>
+                                        <div class="col-10 col-sm-11">
+                                            <input type="email" class="form-control" id="to" placeholder="Type email"  name="emailTo" [(ngModel)]="compose.emailTo">
+                                        </div>
+                                    </div>
+                                                      
+                                    <div class="row">
+                                        <div class="col-sm-11 ml-auto">
+                                            <div class="toolbar" role="toolbar">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-bold"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-italic"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-underline"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-align-left"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-align-right"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-align-center"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-align-justify"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-indent"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-outdent"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-list-ul"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-light">
+                                                        <span class="fa fa-list-ol"></span>
+                                                    </button>
+                                                </div>
+                                                <button type="button" class="btn btn-light">
+                                                    <span class="fa fa-trash-o"></span>
+                                                </button>
+                                                <button type="button" class="btn btn-light">
+                                                    <span class="fa fa-paperclip"></span>
+                                                </button>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="fa fa-tags"></span>
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">add label <span class="badge badge-danger">
+                                                                Home</span></a>
+                                                        <a class="dropdown-item" href="#">add label <span class="badge badge-info">
+                                                                Job</span></a>
+                                                        <a class="dropdown-item" href="#">add label <span class="badge badge-success">
+                                                                Clients</span></a>
+                                                        <a class="dropdown-item" href="#">add label <span class="badge badge-warning">
+                                                                News</span></a>
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div *ngIf="contacts!= null && contacts.length != 0" class="my-5">
-                                <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
-                                    [pageSizeOptions]="pageSizeOptions">
-                                </mat-paginator>
-                            </div>
-                            <div *ngIf="contacts== null || contacts.length == 0" class="my-5">
-                                <h1 class="text-center">No Favorite Email!</h1>
-                            </div>
+                                            <div class="form-group mt-4">
+                                                <textarea class="form-control" id="message" name="body" rows="12"
+                                                    placeholder="Click here to reply" name="message" [(ngModel)]="compose.message"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary" (click)="onSend()" style="margin:20px 15px 0px 0px;">Send</button>
+                                                <button type="submit" class="btn btn-danger" (click)="onDiscard()" style="margin:20px 15px 0px 0px;">Discard</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </main>
+                              
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
-</div>

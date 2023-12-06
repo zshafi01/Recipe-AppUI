@@ -1,5 +1,5 @@
-<div class="container my-5">
-    <div class="card" style="width: 50rem; padding: 20px;"> 
+<div class="container my-5 mx-auto">
+    <div class="card" style="width: 50rem; padding: 20px;">
         <form class="example-form" #recipeForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-Group">
                 <label for="title" class="form-label">Title</label>
@@ -64,8 +64,8 @@
 
             <div class="form-Group">
                 <label for="difficulty" class="form-label">Difficulty</label>
-                <select [(ngModel)]="recipe.difficulty" name="diffeculty" class="form-control"
-                    aria-label="Default select example" #diffeculty="ngModel" required>
+                <select [(ngModel)]="recipe.difficulty" name="diffeculty" class="form-control" aria-label="Default select example"
+                    #diffeculty="ngModel" required>
                     <option value="undefined" selected>Select Category</option>
                     <option *ngFor="let diffeculty of diffeculties" [value]="diffeculty">
                         {{diffeculty| titlecase}}</option>

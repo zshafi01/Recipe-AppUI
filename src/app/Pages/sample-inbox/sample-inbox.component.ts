@@ -1,20 +1,20 @@
-import { NONE_TYPE } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComposeEmail } from 'src/app/models/compose-email';
 import { Contact } from 'src/app/models/contact';
 import { Reply } from 'src/app/models/reply';
+import { SentEmails } from 'src/app/models/sent-emails';
 import { DeleteBackendService } from 'src/app/services/delete-backend.service';
 import { RegistrationBackendService } from 'src/app/services/registration-backend.service';
 import { UpdateBackendService } from 'src/app/services/update-backend.service';
 import { ViewBackendService } from 'src/app/services/view-backend.service';
 
 @Component({
-  selector: 'app-admin-compose-email',
-  templateUrl: './admin-compose-email.component.html',
-  styleUrls: ['./admin-compose-email.component.css','./admin-compose-email-one.component.css','./admin-compose-email-two.component.css','./admin-compose-email-three.component.css']
+  selector: 'app-sample-inbox',
+  templateUrl: './sample-inbox.component.html',
+  styleUrls: ['./sample-inbox.component.css','./sample-inbox.componentOne.css','./sample-inbox.componentTwo.css','./sample-inbox.componentThree.css']
 })
-export class AdminComposeEmailComponent {
+export class SampleInboxComponent {
   id!:number;
   display:string ="none";
   alertDisply:string ="none";

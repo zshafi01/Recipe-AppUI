@@ -37,6 +37,9 @@ import { AdminTrashComponent } from './Pages/admin-trash/admin-trash.component';
 import { AdminFavoriteComponent } from './Pages/admin-favorite/admin-favorite.component';
 import { AdminComposeEmailComponent } from './Pages/admin-compose-email/admin-compose-email.component';
 import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-emails.component';
+import { SampleInboxComponent } from './Pages/sample-inbox/sample-inbox.component';
+import { SigninComponent } from './Pages/signin/signin.component';
+import { SignupComponent } from './Pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +66,9 @@ import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-e
     AdminFavoriteComponent,
     AdminComposeEmailComponent,
     AdminSentEmailsComponent,
+    SampleInboxComponent,
+    SigninComponent,
+    SignupComponent,
     
   ],
   imports: [

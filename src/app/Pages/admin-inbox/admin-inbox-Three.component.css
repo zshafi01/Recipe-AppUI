@@ -1,0 +1,179 @@
+.badge{
+    background-color: #FE6338;
+    border: none;
+ 
+
+}
+body{
+    background-color: #f9fafb;
+    margin-top:20px;
+    }
+    
+    
+    
+    
+    .inbox-wrapper .email-content .email-list .email-list-item:hover {
+    background: rgba(114, 124, 245, 0.08);
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item:last-child {
+    margin-bottom: 5px;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions {
+    width: 40px;
+    vertical-align: top;
+    display: table-cell;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .form-check {
+    margin-bottom: 0;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .form-check i::before {
+    width: 15px;
+    height: 15px;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .form-check i::after {
+    font-size: .8rem;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .favorite {
+    display: block;
+    padding-left: 1px;
+    line-height: 15px;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .favorite span svg {
+    width: 14px;
+    color: #686868;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .favorite:hover span {
+    color: #8d8d8d;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-actions .favorite.active span svg {
+    color: #fbbc06;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-detail {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-detail .from {
+    display: block;
+    font-weight: 400;
+    margin: 0 0 1px 0;
+    color: #000;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-detail .msg {
+    margin: 0;
+    color: #71738d;
+    font-size: .8rem;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-detail .date {
+    color: #000;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item .email-list-detail .date .icon svg {
+    width: 14px;
+    margin-right: 7px;
+    color: #3d405c;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item.email-list-item--unread {
+    background-color: rgba(114, 124, 245, 0.09);
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item.email-list-item--unread .from {
+    color: #000;
+    font-weight: 800;
+    }
+    
+    .inbox-wrapper .email-content .email-list .email-list-item.email-list-item--unread .msg {
+    font-weight: 700;
+    color: #686868;
+    }
+    
+    .rtl .inbox-wrapper .email-aside .aside-content .aside-header .navbar-toggle .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    }
+    
+    .rtl .inbox-wrapper .email-aside .aside-content .aside-nav .nav {
+    padding-right: 0;
+    }
+    
+    .rtl .inbox-wrapper .email-aside .aside-content .aside-nav .nav li a .icon svg {
+    margin-right: 0;
+    margin-left: 10px;
+    }
+    
+    .rtl .inbox-wrapper .email-aside .aside-content .aside-nav .nav li a .badge {
+    margin-left: 0;
+    margin-right: auto;
+    }
+    
+    .rtl .inbox-wrapper .email-aside .aside-content .aside-nav .nav li a svg {
+    margin-right: 0;
+    margin-left: 10px;
+    }
+    
+    .rtl .inbox-wrapper .email-content .email-inbox-header .email-title svg {
+    margin-right: 0;
+    margin-left: 10px;
+    }
+    
+    .rtl .inbox-wrapper .email-content .email-inbox-header .email-title .new-messages {
+    margin-left: 0;
+    margin-right: 3px;
+    }
+    
+    .rtl .inbox-wrapper .email-content .email-filters .email-pagination-indicator {
+    margin-right: 0;
+    margin-left: 13px;
+    }
+    
+    .rtl .inbox-wrapper .email-content .email-list .email-list-item .email-list-detail .date .icon svg {
+    margin-right: 0;
+    margin-left: 7px;
+    }
+    
+    
+    .badge {
+    padding: 6px 5px 3px;
+    }
+    .text-white {
+    color: #ffffff !important;
+    }
+    .font-weight-bold {
+    font-weight: 700 !important;
+    }
+    .float-right {
+    float: right !important;
+    }
+    .badge-danger-muted {
+    color: #212529;
+    background-color: #FE6338;
+    }
+    .dropdown-item{
+        cursor: pointer;
+    }
+    button:disabled{
+        opacity: 0.4;
+        
+    }
+    
+    

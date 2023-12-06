@@ -13,10 +13,11 @@ export class HomeComponent implements OnInit {
   keyword:string='';
   length:number=0;
   pageSizeOptions = [5, 10, 25];
+  recipes:Recipe[]=[];
 
 
   constructor(private viewBackend:ViewBackendService){ }
-  recipes:Recipe[] =[];
+  // recipes:Recipe[] =[];
 
   ngOnInit(): void {
   this.getAllRecipesPagebale(this.keyword,this.pageNumber,this.pageSize)

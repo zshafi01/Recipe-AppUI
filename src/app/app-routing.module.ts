@@ -22,6 +22,9 @@ import { UpdateRecipeComponent } from './Pages/update-recipe/update-recipe.compo
 import { UpdateUnitOfMeasureComponent } from './Pages/update-unit-of-measure/update-unit-of-measure.component';
 import { AdminComposeEmailComponent } from './Pages/admin-compose-email/admin-compose-email.component';
 import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-emails.component';
+import { SampleInboxComponent } from './Pages/sample-inbox/sample-inbox.component';
+import { SigninComponent } from './Pages/signin/signin.component';
+import { SignupComponent } from './Pages/signup/signup.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'}, 
@@ -43,6 +46,9 @@ const routes: Routes = [
   {path:'admin/trash', component:AdminTrashComponent},
   {path:'admin/favorite', component:AdminFavoriteComponent}, 
   {path:'admin/compose-email',component:AdminComposeEmailComponent},
+  {path:'admin/sample-inbox',component:SampleInboxComponent},
+  {path:'signup',component:SignupComponent},
+  {path:'signin', component:SigninComponent},
   {path:'home',component:HomeComponent},
   {path:'**',component:PagenotfoundComponent},
 
