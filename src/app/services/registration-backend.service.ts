@@ -11,6 +11,7 @@ import { Reply } from '../models/reply';
 import { UnitOfMeasure } from '../models/unit-of-measure';
 import { ContactUsComponent } from '../Pages/contact-us/contact-us.component';
 import { User } from '../models/user';
+import { SecureOtp } from '../models/secure-otp';
 
 @Injectable({
   providedIn: 'root'
@@ -55,4 +56,11 @@ export class RegistrationBackendService {
     public registorUser(user:User):Observable<Object>{
       return this.httpClient.post(this.publicUrl + '/user', user);
     }
+    public conformEmail(secureOtp:SecureOtp):Observable<Object>{
+      return this.httpClient.post(this.publicUrl + '/conform-email', secureOtp);
+    }
+    public checkOtp(secureOtp:SecureOtp):Observable<Object>{
+      return this.httpClient.post(this.publicUrl + '/check-otp', secureOtp);
+    }
+   
 }

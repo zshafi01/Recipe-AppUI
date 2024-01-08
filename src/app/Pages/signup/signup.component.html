@@ -8,7 +8,7 @@
                     <h2 class="form-title">Sign up</h2>
                     <form method="POST" class="register-form" id="register-form" #userForm="ngForm"
                         (ngSubmit)="onSubmit()">
-                      
+
                         <div class="form-Group">
                             <input type="file" (change)="onFileChange($event)" class="form-control" id="profilepic"
                                 name="profilepic"><br>
@@ -19,96 +19,104 @@
                                         <progress class="progress primary-green-color" [value]="p" max="100"></progress>
                                         <h6>{{p | number}}%</h6>
                                     </div>
-            
+
                                 </div>
                             </div>
                             <img [src]="user.profilePic" width="100">
-                           
+
                         </div>
                         <div class="form-group">
                             <label for="fname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" id="fname" #fNameField="ngModel" name="fname" [(ngModel)]="user.firstName"
-                                placeholder="Your Fisrt Name" required>
-                                <mat-error *ngIf="fNameField.touched && fNameField.hasError('required')" class="text-danger">First Name is
-                                    requeried!
-                                </mat-error>
+                            <input type="text" id="fname" #fNameField="ngModel" name="fname"
+                                [(ngModel)]="user.firstName" placeholder="Your Fisrt Name" required>
+                            <mat-error *ngIf="fNameField.touched && fNameField.hasError('required')"
+                                class="text-danger">First Name is
+                                requeried!
+                            </mat-error>
                         </div>
                         <div class="form-group">
                             <label for="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" id="lname" #lNameField="ngModel" name="lname" [(ngModel)]="user.lastName"
                                 placeholder="Your last Name" required>
-                                <mat-error *ngIf="lNameField.touched && lNameField.hasError('required')" class="text-danger">Last Name is
-                                    requeried!
-                                </mat-error>
+                            <mat-error *ngIf="lNameField.touched && lNameField.hasError('required')"
+                                class="text-danger">Last Name is
+                                requeried!
+                            </mat-error>
                         </div>
                         <div class="form-group">
                             <label for="age"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" id="age" #ageField="ngModel" name="age" [(ngModel)]="user.age"
                                 placeholder="Your age" required>
-                                <mat-error *ngIf="ageField.touched && ageField.hasError('required')" class="text-danger">Age is
-                                    requeried!
-                                </mat-error>   
+                            <mat-error *ngIf="ageField.touched && ageField.hasError('required')" class="text-danger">Age
+                                is
+                                requeried!
+                            </mat-error>
                         </div>
                         <div class="form-group">
 
-                        <select class="form-select"  [(ngModel)]="user.gender" name="gender" #genderField="ngModel" required>
-                            <option value="undefined" selected>Please select your gender</option>
-                            <option value="famale">Famale</option>
-                            <option value="male">Male</option>
-                          </select>
-                          <mat-error *ngIf="genderField.touched && genderField.hasError('required')" class="text-danger">Gender is
-                            requeried!
-                        </mat-error>
-                          </div>
-                          <div class="form-group">
+                            <select class="form-select" [(ngModel)]="user.gender" name="gender" #genderField="ngModel"
+                                required>
+                                <option value="undefined" selected>Please select your gender</option>
+                                <option value="famale">Famale</option>
+                                <option value="male">Male</option>
+                            </select>
+                            <mat-error *ngIf="genderField.touched && genderField.hasError('required')"
+                                class="text-danger">Gender is
+                                requeried!
+                            </mat-error>
+                        </div>
+                        <div class="form-group">
                             <label for="phone"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" id="phone" #phoneField="ngModel" name="phone" [(ngModel)]="user.phone"
-                                placeholder="Your phone Number" pattern="^(\+?\d{1,3}\s)?\(?\d{4}\)?[\s.-]?\d{2}[\s.-]?\d{2}[\s.-]?\d{2}$" required>
-                                <mat-error *ngIf="phoneField.touched && phoneField.hasError('required')" class="text-danger">Phone Number is
-                                    requeried!
-                                </mat-error>
-                                <mat-error *ngIf="phoneField.touched && phoneField.invalid && !phoneField.hasError('required')" class="text-danger">Please Enter a valid phone number 0911-70-17-77</mat-error>
+                                placeholder="Your phone Number"
+                                pattern="^(\+?\d{1,3}\s)?\(?\d{4}\)?[\s.-]?\d{2}[\s.-]?\d{2}[\s.-]?\d{2}$" required>
+                            <mat-error *ngIf="phoneField.touched && phoneField.hasError('required')"
+                                class="text-danger">Phone Number is
+                                requeried!
+                            </mat-error>
+                            <mat-error
+                                *ngIf="phoneField.touched && phoneField.invalid && !phoneField.hasError('required')"
+                                class="text-danger">Please Enter a valid phone number 0911-70-17-77</mat-error>
                         </div>
-                      
+
                         <div class="form-group">
                             <label for="userName"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" id="userName" #userNameField="ngModel" name="userName" [(ngModel)]="user.userName"
-                                placeholder="Your User Name" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
-                                <mat-error *ngIf="userNameField.touched && userNameField.hasError('required')" class="text-danger">User Name (email) is
-                                    requeried!
-                                </mat-error>
-                                <mat-error *ngIf="userNameField.touched && userNameField.invalid && !userNameField.hasError('required')" class="text-danger">Please Enter a valid email(username) e.gzfff@gmail.com</mat-error>
+                            <input type="text" id="userName" #userNameField="ngModel" name="userName"
+                                [(ngModel)]="user.userName" placeholder="Your User Name" disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="userConform"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" id="userConform" #userConformField="ngModel" name="userConform" [(ngModel)]="user.conformUserName"
-                                placeholder="Conform Your UserName" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
-                                <mat-error *ngIf="userConformField.touched && userConformField.hasError('required')" class="text-danger">Conform User Name
-                                </mat-error>
-                                <mat-error *ngIf="userConformField.touched && userConformField.invalid && !userConformField.hasError('required')" class="text-danger">Please Enter a valid email(username) e.gzfff@gmail.com</mat-error>
-                                <mat-error *ngIf="userConformField.touched && userConformField.value != userNameField.value" class="text-danger">User Name has to match</mat-error>
 
-                        </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" id="pass" #passwordField="ngModel" name="pass" [(ngModel)]="user.password"
-                                placeholder="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" required>
-                                <mat-error *ngIf="passwordField.touched && passwordField.hasError('required')" class="text-danger">Password is
-                                    requeried!
-                                </mat-error>
-                                <mat-error *ngIf="passwordField.touched && passwordField.invalid && !passwordField.hasError('required')" class="text-danger">Please Enter a valid password</mat-error>
-                        </div>    
+                            <input type="password" id="pass" #passwordField="ngModel" name="pass"
+                                [(ngModel)]="user.password" placeholder="Password"
+                                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+                                required>
+                            <mat-error *ngIf="passwordField.touched && passwordField.hasError('required')"
+                                class="text-danger">Password is
+                                requeried!
+                            </mat-error>
+                            <mat-error
+                                *ngIf="passwordField.touched && passwordField.invalid && !passwordField.hasError('required')"
+                                class="text-danger">Please Enter a valid password</mat-error>
+                        </div>
                         <div class="form-group">
                             <label for="passConform"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" id="passConform" #passwordConformField="ngModel" name="passConform" [(ngModel)]="user.conformPassword"
-                                placeholder="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" required>
-                                <mat-error *ngIf="passwordConformField.touched && passwordConformField.hasError('required')" class="text-danger">Password is
-                                    requeried!
-                                </mat-error>
-                                <mat-error *ngIf="passwordConformField.touched && passwordConformField.invalid && !passwordConformField.hasError('required')" class="text-danger">Please Enter a valid password</mat-error>
-                                <mat-error *ngIf="passwordConformField.touched && passwordConformField.value != passwordField.value" class="text-danger">Password has to match</mat-error>
+                            <input type="password" id="passConform" #passwordConformField="ngModel" name="passConform"
+                                [(ngModel)]="user.conformPassword" placeholder="conform-Password"
+                                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+                                required>
+                            <mat-error *ngIf="passwordConformField.touched && passwordConformField.hasError('required')"
+                                class="text-danger">Password is
+                                requeried!
+                            </mat-error>
+                            <mat-error
+                                *ngIf="passwordConformField.touched && passwordConformField.invalid && !passwordConformField.hasError('required')"
+                                class="text-danger">Please Enter a valid password</mat-error>
+                            <mat-error
+                                *ngIf="passwordConformField.touched && passwordConformField.value != passwordField.value"
+                                class="text-danger">Password has to match</mat-error>
 
-                        </div>                 
+                        </div>
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all

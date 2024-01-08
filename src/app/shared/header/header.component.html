@@ -17,7 +17,16 @@
             <a class="nav-link" routerLink="/contactus">ContactUs</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" routerLink="/faqs">FAQs</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" routerLink="/add-recipe">Post Recipe</a>
+          </li>
+          <li class="nav-item" *ngIf="authUser!= null">
+            <a class="nav-link" (click)="onLogout()">Log Out</a>
+          </li>
+          <li class="nav-item" *ngIf="authUser== null">
+            <a class="nav-link" routerLink="/signin" >LogIn|registor</a>
           </li>
          
         </ul>

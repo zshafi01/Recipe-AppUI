@@ -1,0 +1,30 @@
+<section class="container-fluid bg-body-tertiary d-block">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4" style="min-width: 500px;">
+          <div class="card bg-white mb-5 mt-5 border-0" style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02);">
+            <div class="card-body p-5 text-center">
+              <h4>Verify</h4>
+              <p>Please enter your email address to be verify</p>
+                <form #conformEmailForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="form-Group mb-12">
+                <label for="userName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input class="form-control" type="text" id="userName" #userNameField="ngModel" name="userName" [(ngModel)]="secureOtp.email"
+                placeholder="example@example.com" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                    <mat-error *ngIf="userNameField.touched && userNameField.hasError('required')" class="text-danger">User Name (email) is
+                        requeried!
+                    </mat-error>
+                    <mat-error *ngIf="userNameField.touched && userNameField.invalid && !userNameField.hasError('required')" class="text-danger">Please Enter a valid email(username) e.gzfff@gmail.com</mat-error>
+            </div>
+  
+              <button class="btn btn-primary mb-3 mt-3">
+                Submit
+              </button>
+              </form>
+              <p class="resend text-muted mb-0">
+                Already have an account? <a href="signin">Log in</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>

@@ -25,6 +25,12 @@ import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-e
 import { SampleInboxComponent } from './Pages/sample-inbox/sample-inbox.component';
 import { SigninComponent } from './Pages/signin/signin.component';
 import { SignupComponent } from './Pages/signup/signup.component';
+import { PaymentComponent } from './payment/payment.component';
+import { OtpComponent } from './Pages/otp/otp.component';
+import { ConformEmailComponent } from './Pages/conform-email/conform-email.component';
+import { FAQsComponent } from './Pages/faqs/faqs.component';
+import { UserDashboardComponent } from './Pages/user-dashboard/user-dashboard.component';
+import { AdminDashboardComponent } from './Pages/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'}, 
@@ -47,9 +53,18 @@ const routes: Routes = [
   {path:'admin/favorite', component:AdminFavoriteComponent}, 
   {path:'admin/compose-email',component:AdminComposeEmailComponent},
   {path:'admin/sample-inbox',component:SampleInboxComponent},
-  {path:'signup',component:SignupComponent},
+  {path:'signup/:email',component:SignupComponent},
   {path:'signin', component:SigninComponent},
+  {path:'payment', component:PaymentComponent},
+  {path: 'otp/:email', component:OtpComponent},
+  {path: 'conform-email', component:ConformEmailComponent},
+  {path: 'faqs', component:FAQsComponent},
+  {path: 'user-dashboard', component:UserDashboardComponent},
+
+  {path: 'admin-dashboard', component:AdminDashboardComponent},
+
   {path:'home',component:HomeComponent},
+
   {path:'**',component:PagenotfoundComponent},
 
 ];

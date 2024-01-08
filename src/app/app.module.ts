@@ -40,6 +40,12 @@ import { AdminSentEmailsComponent } from './Pages/admin-sent-emails/admin-sent-e
 import { SampleInboxComponent } from './Pages/sample-inbox/sample-inbox.component';
 import { SigninComponent } from './Pages/signin/signin.component';
 import { SignupComponent } from './Pages/signup/signup.component';
+import { PaymentComponent } from './payment/payment.component';
+import { OtpComponent } from './Pages/otp/otp.component';
+import { ConformEmailComponent } from './Pages/conform-email/conform-email.component';
+import { FAQsComponent } from './Pages/faqs/faqs.component';
+import { UserDashboardComponent } from './Pages/user-dashboard/user-dashboard.component';
+import { AdminDashboardComponent } from './Pages/admin-dashboard/admin-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +75,12 @@ import { SignupComponent } from './Pages/signup/signup.component';
     SampleInboxComponent,
     SigninComponent,
     SignupComponent,
+    PaymentComponent,
+    OtpComponent,
+    ConformEmailComponent,
+    FAQsComponent,
+    UserDashboardComponent,
+    AdminDashboardComponent,
     
   ],
   imports: [
